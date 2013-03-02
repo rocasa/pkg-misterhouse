@@ -1,0 +1,10 @@
+# Defaults for misterhouse initscript
+# sourced by /etc/init.d/misterhouse
+# installed at /etc/default/misterhouse by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+# Additional options that are passed to the Daemon.
+DAEMON_OPTS=""

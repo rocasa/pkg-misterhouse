@@ -1,0 +1,30 @@
+Source: misterhouse
+Section: unknown
+Priority: extra
+Maintainer: Robert James Clay <jame@rocasa.us>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: http://misterhouse.sourceforge.net
+#Vcs-Git: git://git.debian.org/collab-maint/misterhouse.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/misterhouse.git;a=summary
+
+Package: misterhouse
+Architecture: any
+Depends: ${perl:Depends}, ${misc:Depends}
+Recommends: mpd, flite | festival
+Suggests: bottlerocket
+Description: Home Automation with Perl
+ MisterHouse is an open source home automation program. It's fun, it's free,
+ and it's entirely geeky. Written in Perl, it fires events based on time, web,
+ socket, voice, and serial data. Perl subroutines and objects are used to give
+ it a powerful programming interface.
+
+Package: misterhouse-doc
+Architecture: all
+Description: documentation for MisterHouse
+ MisterHouse is an open source home automation program. It's fun, it's free,
+ and it's entirely geeky. Written in Perl, it fires events based on time, web,
+ socket, voice, and serial data. Perl subroutines and objects are used to give
+ it a powerful programming interface.
+ .
+ This package contains HTML documentation and the examples.

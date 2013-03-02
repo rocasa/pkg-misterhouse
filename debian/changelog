@@ -1,0 +1,11 @@
+misterhouse (2.205-1~1) UNRELEASED; urgency=low
+
+  TODO:
+    - Determine package Requires/Recommends/Suggests.
+    - Determine Perl module Requires/Recommends/Suggests.
+    - Determine just what files need to be installed and/or in source package.
+    - Detail Copyright & License as necessary for MisterHouse files.
+    - For details and other TODO items, see debian/TODO.
+  * Initial release (Closes: #586135)
+
+ -- Robert James Clay <jame@rocasa.us>  Fri, 01 Mar 2013 23:21:51 -0500

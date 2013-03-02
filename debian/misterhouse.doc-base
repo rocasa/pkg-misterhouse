@@ -1,0 +1,10 @@
+Document: misterhouse
+Title: Debian MisterHouse Manual
+Author: <insert document author here>
+Abstract: This manual describes what misterhouse is
+ and how it can be used to automate your home.
+Section: unknown
+
+Format: HTML
+Index: /usr/share/doc/misterhouse/html/index.html
+Files: /usr/share/doc/misterhouse/html/*.html

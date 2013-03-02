@@ -1,0 +1,14 @@
+    debian/TODO for MisterHouse
+    ===========================
+
+- Determine package Requires/Recommends/Suggests.
+
+- Determine just what files need to be installed and/or in source package.
+
+- Detail Copyright & License as necessary for MisterHouse files.
+
+- Perl Modules Required/Recommended/Suggested:
+
+    - Required by bin/get_weather:   Geo::WeatherNOAA
+    CPAN: Geo-WeatherNOAA-4.38.tar.gz (10 Dec 2006)
+
