@@ -1,0 +1,11 @@
+usr
+usr/share
+usr/share/misterhouse
+var
+var/lib
+var/lib/misterhouse
+var/lib/misterhouse/logs
+var/lib/misterhouse/phone
+var/lib/misterhouse/phone/logs
+var/lib/misterhouse/proxy
+var/lib/misterhouse/web
