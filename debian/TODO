@@ -1,14 +1,95 @@
     debian/TODO for MisterHouse
     ===========================
 
-- Determine package Requires/Recommends/Suggests.
 
-- Determine just what files need to be installed and/or in source package.
+- System user 'misterhouse' is created at installation time and removed when
+  the package is purged. It will be the owner of the /usr/share/misterhouse
+  directory, and will run the 'mh' daemon application(s). Are there any groups
+  it should be in by default?
 
-- Detail Copyright & License as necessary for MisterHouse files.
 
-- Perl Modules Required/Recommended/Suggested:
+- Install the HTML documentation with the misterhouse-doc package, and do that
+  so it can be installed by itself (i.e., not dependent on the main misterhouse 
+  package being installed).
+    - Install the files to /usr/share/doc/misterhouse-doc/html/
+    - Rename debian/misterhouse.doc-base to debian/misterhouse-doc.doc-base
+    - Correct path listed in debian/misterhouse-doc.doc-base
+    - Correct entry for the 'Author:'
+    - Correct entry for the 'Section:'
+    - Rewrite entry for 'Abstract:'?
 
-    - Required by bin/get_weather:   Geo::WeatherNOAA
-    CPAN: Geo-WeatherNOAA-4.38.tar.gz (10 Dec 2006)
 
+- Determine which deamons should be started at run time as well as if there
+  should be just one init script or separate ones for things like mh_proxy or
+  mh_send_server.pl. (Separate ones could enable those being separately packaged.)
+
+
+- Determine just what files need to be installed and where, or even if they need
+  to be in even the source package.
+
+    - lib/site_win50, lib/site_win56, lib/site_win58, lib/site_win512: are all
+      windows specific and are not needed in the orig.tar.gz archive. (And are
+      available with whichever perl installation is used there in any case, and
+      so are not needed for a windows installation either.) 
+
+    - lib/site contains a large number of perl modules; no need to include them
+      in the source or binary package(s) if they're already in Debian or at least
+      on CPAN.  (If the latter; add a note for them to README.Debian and then
+      investigate getting them into Debian.)
+
+    - bin/h2ph - provided by the base Perl installation, so do not need it here.
+
+    - Win32 specific files in bin/*, etc do not need to be in the binary package.
+        - bin/wactrl.exe - PE32 executable (GUI) Intel 80386, for MS Windows
+
+- Specifically review bin/* & code/* files for where or if they should be installed.
+    - bin/mh.ini - patched version to /etc/misterhouse and as example
+    - bin/mh.example.ini - install as example
+    - bin/mh_proxy.ini - patched version to /etc/misterhouse and as example
+    - 'bin/send_verizon' - for now, install as an example.
+    - bin/*rc - Install as examples? Or not install but contribute debian example
+      when have that working?        
+
+
+- ViaVoice related files:  Do not include by default in binary? If not actually
+  available anywhere else and if the license is clear; create an arch dependent
+  binary package for it?  
+  - bin/viavoice_server       ViaVoice server executable (32 bit, dynamically linked.                                  linked)
+  - bin/viavoice_server.C :       Source code for viavoice_server
+  - bin/viavoice_server_start:    not needed if viavoice_server not being used.
+
+- vv_tts related files:   At least for now, do not install in the binary package?
+  - bin/vv_tts.pl  :  Requires a ViaVoiceTTS package
+  - bin/vv_tts_simple.pl  :  Contains the ViaVoiceTTS package?
+  - bin/vv_postscript.pl  :  depends on /usr/bin/esdctl & /usr/bin/amixer
+  - bin/vv_prescript.pl   :  depends on /usr/bin/esdctl & /usr/bin/amixer
+
+- data/ini/*.ini - Install as examples?
+- data/ini - Create and reference something like a /etc/misterhouse/ini.d directory?
+  And/or just reference all ini files to go to /etc/misterhouse directory?  (Patches
+  neccesary to example ini files & etc to reference that?)
+  
+- Detail Copyright & License as necessary for MisterHouse files for inclusion
+  in debian/copyright.
+
+
+- Determine non-perl package Requires/Recommends/Suggests for debian/control.
+    - Should the Recommends for 'mpd' actually be 'mpd|mpd-client'? And should
+      it be a Suggests instead?
+
+
+- Perl Modules Required/Recommended/Suggested for debian/control: review both
+  the lib/site/* files as well as the included scripts in the bin/ & code/
+  directories (debian/PerlModulesTODO.html)
+
+
+- Configure it for use of a '/var/log/misterhouse' directory rather than have
+  logs go to somewhere in /var/lib/misterhouse?
+
+
+- Process the distributed *pod files, like 'mh.pod', as man pages?
+
+
+- Determine a way for MisterHouse to run dwww so that on installs where it's the
+  only web server application, the other locally installed documetation can be
+  searched and viewed.
