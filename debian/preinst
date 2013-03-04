@@ -16,6 +16,8 @@ set -e
 
 case "$1" in
     install|upgrade)
+        # configure 'misterhouse' user and group
+        getent passwd misterhouse >/dev/null 2>&1 || adduser --system --quiet --home /usr/share/misterhouse --group --shell /bin/bash --gecos "MisterHouse Administrator" misterhouse
     ;;
 
     abort-upgrade)
