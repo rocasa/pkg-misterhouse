@@ -1,0 +1,7 @@
+bin/viavoice_server.C
+bin/viavoice_server_start
+bin/vv_postscript.pl
+bin/vv_prescript.pl
+bin/vv_tts.pl
+bin/vv_tts_simple.pl
+code/examples
