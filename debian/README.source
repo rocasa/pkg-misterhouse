@@ -1,8 +1,52 @@
 misterhouse for Debian
 ----------------------
 
+
+*orig.tar.gz source archive
+===========================
+
+    There are multiple files in the current MisterHouse v2.x source that do not
+    need to be or should not be in the *orig.tar.gz MisterHouse source archive.
+    The archive can be created from, for instance, a v2.x archive or from the
+    hollie/misterhouse stable branch.
+     
+    Procedure for createing a MisterHouse *orig.tar.gz source archive
+
+    # Create working directory named misterhouse, then extract the upstream 
+    source archive to that directory.
+
+WORKDIR="/path/to/working/directory/misterhouse"
+cd $WORKDIR
+
+    - bin/h2ph - provided by the base Perl installation, so do not need it with
+      the source package. Needed as a Build-Depends? Or a Depends? When does it
+      need to be used?  But do not include it with the orig archive.
+rm -f $WORKDIR/bin/h2ph
+
+
+    - lib/site_win50, lib/site_win56, lib/site_win58, lib/site_win512: are all
+      windows specific and are not needed in the orig.tar.gz archive. (And are
+      available with whichever perl installation is used there in any case, and
+      so are not needed for a windows installation either.) 
+
+
+    - Win32 specific files in bin/*, etc do not need to be in the binary package.
+        - bin/wactrl.exe - PE32 executable (GUI) Intel 80386, for MS Windows
+
+
+
+
+
+    # Create the source archive from the working directory. 
+
+
+
+Patching the source archive
+============================
+
+
 This package uses quilt to manage any and all modifications to the upstream
-source. Changes are stored in the source package as diffs in debian/patches
+*orig.tar.gz source archive. Changes are stored in the source package as diffs in debian/patches
 and applied during the build.
 
 See /usr/share/doc/quilt/README.source for a detailed explanation.
