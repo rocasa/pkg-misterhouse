@@ -4,4 +4,14 @@ bin/vv_postscript.pl
 bin/vv_prescript.pl
 bin/vv_tts.pl
 bin/vv_tts_simple.pl
+bin/misterhouse_dan.rc
+bin/misterhouse_Gentoo.rc
+bin/misterhouse_john.rc
+bin/misterhouse_kirk.rc
+bin/misterhouse_kirk_start.rc
+bin/misterhouse_mark.rc
+bin/misterhouse_paul.rc
+bin/misterhouse.rc
+bin/misterhouse.steve-fedora.rc
+bin/misterhouse_SuSe.rc
 code/examples
