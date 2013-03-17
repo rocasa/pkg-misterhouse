@@ -1,9 +1,3 @@
-bin/viavoice_server.C
-bin/viavoice_server_start
-bin/vv_postscript.pl
-bin/vv_prescript.pl
-bin/vv_tts.pl
-bin/vv_tts_simple.pl
 bin/misterhouse_dan.rc
 bin/misterhouse_Gentoo.rc
 bin/misterhouse_john.rc
@@ -14,4 +8,12 @@ bin/misterhouse_paul.rc
 bin/misterhouse.rc
 bin/misterhouse.steve-fedora.rc
 bin/misterhouse_SuSe.rc
+bin/viavoice_server.C
+bin/viavoice_server_start
+bin/vv_postscript.pl
+bin/vv_prescript.pl
+bin/vv_tts.pl
+bin/vv_tts_simple.pl
+bin/K8000.ZIP
+bin/k8055d.tar.bz2
 code/examples
