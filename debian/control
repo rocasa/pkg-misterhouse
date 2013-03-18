@@ -10,7 +10,7 @@ Vcs-Browser: https://github.com/jame/misterhouse/commits/debian
 
 Package: misterhouse
 Architecture: all
-Depends: ${perl:Depends}, ${misc:Depends}
+Depends: ${perl:Depends}, ${misc:Depends}, adduser
 Recommends: mpd, flite | festival
 Suggests: bottlerocket
 Description: Home Automation with Perl
