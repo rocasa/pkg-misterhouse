@@ -67,3 +67,4 @@ bin/xAP-festival.pl /usr/share/misterhouse/bin
 bin/xAP-info.pl /usr/share/misterhouse/bin
 bin/xAP-speech.pl /usr/share/misterhouse/bin
 code/common /usr/share/misterhouse/common
+sounds/ /usr/share/misterhouse/sounds
