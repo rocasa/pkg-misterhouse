@@ -9,7 +9,7 @@ Vcs-Git: git@github.com:jame/misterhouse.git
 Vcs-Browser: https://github.com/jame/misterhouse/commits/debian
 
 Package: misterhouse
-Architecture: any
+Architecture: all
 Depends: ${perl:Depends}, ${misc:Depends}
 Recommends: mpd, flite | festival
 Suggests: bottlerocket
