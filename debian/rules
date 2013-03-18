@@ -12,3 +12,7 @@ export DH_OPTIONS
 
 %:
 	dh $@ 
+
+override_dh_fixperms:
+	dh_fixperms
+	find debian/misterhouse/usr/share/misterhouse/lib -name '*.pm' -exec chmod -x '{}' \;
