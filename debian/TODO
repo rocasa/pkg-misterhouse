@@ -10,64 +10,71 @@
 
 - Install the HTML documentation with the misterhouse-doc package, and do that
   so it can be installed by itself (i.e., not dependent on the main misterhouse 
-  package being installed).
-    - Install the files to /usr/share/doc/misterhouse-doc/html/
-    - Rename debian/misterhouse.doc-base to debian/misterhouse-doc.doc-base
-    - Correct path listed in debian/misterhouse-doc.doc-base
-    - Correct entry for the 'Author:'
-    - Correct entry for the 'Section:'
-    - Rewrite entry for 'Abstract:'?
+  package being installed).  
+    - Correct entry in misterhouse-doc.doc-base for the 'Author:'
+    - Correct entry in misterhouse-doc.doc-base for the 'Section:'
+    - Rewrite entry in misterhouse-doc.doc-base for 'Abstract:'?
+    - Include note about it in main package
 
 
 - Determine which deamons should be started at run time as well as if there
   should be just one init script or separate ones for things like mh_proxy or
   mh_send_server.pl. (Separate ones could enable those being separately packaged.)
 
+- Add creation of an Arch dependent MisterHouse package.
+    - Name misterhouse-xs? Using misterhouse-bin as the name may not be good
+      because of the /usr/share/misterhouse/bin directory.
+    - Arch dependent packages that are required by MisterHouse?
+    - Include Text::LevenshteinXS as a Recommends.
+    - Any other XS perl modules?
+    - Include a /usr/local/lib/misterhouse directory for locally installed arch
+      dependent files installed by local admin?
 
 - Determine just what files need to be installed and where, or even if they need
   to be in even the source package.
-
-    - lib/site_win50, lib/site_win56, lib/site_win58, lib/site_win512: are all
-      windows specific and are not needed in the orig.tar.gz archive. (And are
-      available with whichever perl installation is used there in any case, and
-      so are not needed for a windows installation either.) 
 
     - lib/site contains a large number of perl modules; no need to include them
       in the source or binary package(s) if they're already in Debian or at least
       on CPAN.  (If the latter; add a note for them to README.Debian and then
       investigate getting them into Debian.)
 
-    - bin/h2ph - provided by the base Perl installation, so do not need it here.
-
-    - Win32 specific files in bin/*, etc do not need to be in the binary package.
-        - bin/wactrl.exe - PE32 executable (GUI) Intel 80386, for MS Windows
-
-- Specifically review bin/* & code/* files for where or if they should be installed.
+- Specifically review bin/* files for where or if they should be installed.
     - bin/mh.ini - patched version to /etc/misterhouse and as example
     - bin/mh.example.ini - install as example
     - bin/mh_proxy.ini - patched version to /etc/misterhouse and as example
     - 'bin/send_verizon' - for now, install as an example.
-    - bin/*rc - Install as examples? Or not install but contribute debian example
-      when have that working?        
+    - bin/*rc - Install as examples. (Also contribute new debian example when
+      have that working.)
+    - Install bin/get_email_rule_example.pl as an example instead of to lib dir?
+    - Do not install bin/get_mail.wbt?
+
+- bin/mh:
+    - Installed to /usr/share/misterhouse/bin/mh
+    - Review commented program lines for if they should be patched to be used. 
+
+- bin/mh.ini:
+    - Install it to /etc/misterhouse/mh.ini? To /usr/share/misterhouse/bin/mh.ini?
+      Or just a symlink to it in /etc/misterhouse for the latter if it's needed there?
+    - Install an unpatched version: with just the misterhouse-doc pkg? Main pkg?
+      Will depend in part on how the /etc/misterhouse/mh.ini gets installed.
+- /etc/misterhouse/mh.ini
+    - Patch:  remove sections regarding viavoice and vv_tts?
+    - Patch:  change default from "tk=1" to "tk=0" ?
 
 
-- ViaVoice related files:  Do not include by default in binary? If not actually
-  available anywhere else and if the license is clear; create an arch dependent
-  binary package for it?  
-  - bin/viavoice_server       ViaVoice server executable (32 bit, dynamically linked.                                  linked)
-  - bin/viavoice_server.C :       Source code for viavoice_server
-  - bin/viavoice_server_start:    not needed if viavoice_server not being used.
+- Specifically review code/* files for where or if they should be installed.
+    - Install code/common/ to /usr/share/misterhouse/common & patch the main
+      mh.ini file to set code_dir_common for that?
+    - If install the rest of the code/ subdirectories as examples, where to
+      point the code_dir parameter to?  A /usr/local/ subdirectory? It looks
+      like it is intended to be for the local admin.  
 
-- vv_tts related files:   At least for now, do not install in the binary package?
-  - bin/vv_tts.pl  :  Requires a ViaVoiceTTS package
-  - bin/vv_tts_simple.pl  :  Contains the ViaVoiceTTS package?
-  - bin/vv_postscript.pl  :  depends on /usr/bin/esdctl & /usr/bin/amixer
-  - bin/vv_prescript.pl   :  depends on /usr/bin/esdctl & /usr/bin/amixer
-
+ 
 - data/ini/*.ini - Install as examples?
 - data/ini - Create and reference something like a /etc/misterhouse/ini.d directory?
   And/or just reference all ini files to go to /etc/misterhouse directory?  (Patches
   neccesary to example ini files & etc to reference that?)
+
   
 - Detail Copyright & License as necessary for MisterHouse files for inclusion
   in debian/copyright.
@@ -83,13 +90,16 @@
   directories (debian/PerlModulesTODO.html)
 
 
-- Configure it for use of a '/var/log/misterhouse' directory rather than have
-  logs go to somewhere in /var/lib/misterhouse?
+- Process the distributed *pod files, like 'mh.pod', as man pages as well as to
+  html files if they's not already done?
 
 
-- Process the distributed *pod files, like 'mh.pod', as man pages?
+- Configure it for use of a separate '/var/log/misterhouse' directory rather
+  than have logs files go to /var/lib/misterhouse/logs?
 
 
-- Determine a way for MisterHouse to run dwww so that on installs where it's the
-  only web server application, the other locally installed documetation can be
-  searched and viewed.
+- Determine a way for MisterHouse to run dwww so that on installs where it's
+  the only web server application, the other locally installed documentation
+  can be searched and viewed.  Add as note in README.Debian?  (If add a patch
+  to always have such a link available, would need to add dwww as a package
+  dependency.)
