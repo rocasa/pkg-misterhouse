@@ -70,3 +70,4 @@ code/common /usr/share/misterhouse/common
 lib/.pm /usr/share/misterhouse/lib
 lib/Insteon /usr/share/misterhouse/lib
 sounds/ /usr/share/misterhouse/sounds
+web/ /usr/share/misterhouse/web
