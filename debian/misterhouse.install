@@ -69,5 +69,5 @@ bin/xAP-speech.pl /usr/share/misterhouse/bin
 code/common /usr/share/misterhouse/common
 lib/*.pm /usr/share/misterhouse/lib
 lib/Insteon /usr/share/misterhouse/lib
-sounds/ /usr/share/misterhouse/sounds
-web/ /usr/share/misterhouse/web
+sounds/ /usr/share/misterhouse
+web/ /usr/share/misterhouse
