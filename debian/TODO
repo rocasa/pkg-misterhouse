@@ -60,6 +60,10 @@
 - /etc/misterhouse/mh.ini
     - Patch:  remove sections regarding viavoice and vv_tts?
     - Patch:  change default from "tk=1" to "tk=0" ?
+    - Patch:  default code_dir_common to "/usr/share/misterhouse/common".
+    - Patch:  default code_dir to "/usr/local/share/misterhouse/code"?
+    - Patch:  default sounds_dir_common to "/usr/share/misterhouse/sounds".
+    - Patch:  default sound_dir to "/usr/local/share/misterhouse/sounds"?
 
 
 - Specifically review code/* files for where or if they should be installed.
@@ -69,11 +73,20 @@
       point the code_dir parameter to?  A /usr/local/ subdirectory? It looks
       like it is intended to be for the local admin.  
 
- 
+- sounds/
+    - Install as /usr/share/misterhouse/sounds
+    - Patch:  set as sound_dir_common in /etc/misterhouse/mh.ini
+
+
+- data/
+    - At least some of the subdirectories should be installed to the main
+    /var/lib/misterhouse directory?  But which of the many files actually
+    need to be installed except perhaps as examples.?
+    - Use just the files named "empty_file" to enable installation of the 
+    directories without warnings/errors regarding empty package directories
+    from Lintian?
+
 - data/ini/*.ini - Install as examples?
-- data/ini - Create and reference something like a /etc/misterhouse/ini.d directory?
-  And/or just reference all ini files to go to /etc/misterhouse directory?  (Patches
-  neccesary to example ini files & etc to reference that?)
 
   
 - Detail Copyright & License as necessary for MisterHouse files for inclusion
@@ -100,6 +113,152 @@
 
 - Determine a way for MisterHouse to run dwww so that on installs where it's
   the only web server application, the other locally installed documentation
-  can be searched and viewed.  Add as note in README.Debian?  (If add a patch
+  can be searched and viewed.  Add a note in README.Debian?  (If add a patch
   to always have such a link available, would need to add dwww as a package
-  dependency.)
+  dependency.)  Use something like "html_alias_dwww = /var/www/dwww" plus 
+  a link somewhere?
+
+
+    - Lintian results from a test build on 18 March 2013
+
+E: misterhouse: helper-templates-in-copyright
+E: misterhouse: copyright-contains-dh_make-todo-boilerplate
+E: misterhouse: section-is-dh_make-template
+W: misterhouse: readme-debian-contains-debmake-template
+
+E: misterhouse-doc: helper-templates-in-copyright
+E: misterhouse-doc: copyright-contains-dh_make-todo-boilerplate
+E: misterhouse-doc: section-is-dh_make-template
+E: misterhouse-doc: nested-examples-directory usr/share/doc/misterhouse-doc/examples/examples/
+W: misterhouse-doc: doc-base-unknown-section misterhouse:6 unknown
+W: misterhouse-doc: wrong-section-according-to-package-name misterhouse-doc => doc
+
+W: misterhouse source: debhelper-but-no-misc-depends misterhouse-doc
+
+
+    - Need to fix the installation and/or doc-base path reference.
+E: misterhouse-doc: doc-base-file-references-missing-file misterhouse:9 /usr/share/doc/misterhouse-doc/html/index.html
+E: misterhouse-doc: doc-base-file-references-missing-file misterhouse:10 /usr/share/doc/misterhouse-doc/html/*.html
+
+
+    - Create a patch to correct the bang path line in the file.
+E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/bin/test_x10 (#!/bin/perl != /usr/bin/perl)
+E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/bin/xAP-festival.pl (#!/bin/perl != /usr/bin/perl)
+W: misterhouse: interpreter-not-absolute usr/share/misterhouse/bin/display_callers #!d:/perl/bin/perl.exe
+W: misterhouse: unusual-interpreter usr/share/misterhouse/bin/display_callers #!d:/perl/bin/perl.exe
+
+    - Could create a patch to correct these but do they actually need it? (Patch, either way?)
+E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/bin/dbmedit.cgi (#!/usr/local/bin/perl != /usr/bin/perl)
+E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/bin/test_cgi_error.pl (#!/local/bin/perl != /usr/bin/perl)
+E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/bin/weather_graph_zoom.pl (#!/local/bin/perl != /usr/bin/perl)
+E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/newclock/alarm.pl (#!/local/bin/perl != /usr/bin/perl)
+E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/newclock/index.pl (#!/local/bin/perl != /usr/bin/perl)
+E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/organizer/calendar.pl (#!/usr/local/bin/perl != /usr/bin/perl)
+E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/organizer/contacts.pl (#!/usr/local/bin/perl != /usr/bin/perl)
+E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/organizer/tasks.pl (#!/usr/local/bin/perl != /usr/bin/perl)
+
+    - Create a patch to add a '#!/bin/usr/perl' line to the file?
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/Insteon/MessageDecoder_test.pl
+
+
+    - Provided by libjs-mootools package. Replace with package dependency plus
+      sym link? Just remove plus document in README.Debian?
+W: misterhouse: embedded-javascript-library usr/share/misterhouse/web/SmoothGallery/scripts/mootools.v1.11.js
+W: misterhouse: embedded-javascript-library usr/share/misterhouse/web/slideshow/js/mootools.js
+
+    - Provided by libjs-jquery package. Replace with package dependency plus
+      sym link? Just remove plus document in README.Debian?
+W: misterhouse: embedded-javascript-library usr/share/misterhouse/web/iphone/jquery/jquery.min.js
+W: misterhouse: embedded-javascript-library usr/share/misterhouse/web/js/jquery.min.js
+
+    - This is intended to be part of the documentation and therefore will not be
+      executed there. Override? It appears to be available as the (newer) package
+      libjs-prototype; replace with an info file noting that? Just remove plus
+      document in README.Debian? (And might that pkg info be pushed upstream?)
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/examples/SOAP_examples/html/scripts/prototype.js
+
+
+    - These are all in the documentation: add a line to debian/rules that removes the execute setting?
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/examples/SOAP_examples/vb.net/Web References/MySoapRef/Reference.map
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/examples/SOAP_examples/vb.net/AssemblyInfo.vb
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/public/rrd_create.bat
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/misterhouse_dan.rc
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/examples/SOAP_examples/vb.net/WebServiceTest.vbproj.user
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/misterhouse_john.rc
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/examples/Insteon_thermostat.pl
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/test/test_x10.pl
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/misterhouse_mark.rc
+
+
+    - Check what license they are; may need to remove and/or not install them
+      but update debian/copyright.
+W: misterhouse: extra-license-file usr/share/misterhouse/web/SmoothGallery/license.txt
+W: misterhouse: extra-license-file usr/share/misterhouse/web/comics/dailystrips/COPYING
+W: misterhouse: extra-license-file usr/share/misterhouse/web/iphone/icons/LICENSE.TXT
+W: misterhouse: extra-license-file usr/share/misterhouse/web/tattler/COPYING
+
+
+    - These don't even need to be in the orig archive?  Just don't install?
+W: misterhouse: windows-thumbnail-database-in-package usr/share/misterhouse/web/iphone/WebApp/Design/Img/Thumbs.db
+W: misterhouse: windows-thumbnail-database-in-package usr/share/misterhouse/web/iphone/WebApp/Img/Thumbs.db
+
+
+    - Correct permissions using debian/rules?
+W: misterhouse: script-not-executable usr/share/misterhouse/bin/mh_users_table.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/bin/authors_svn
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/mhc
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/xAP-bluetooth
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/get_email_rule_example.pl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/print_socket_fork.pl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/xAP-bluetooth.pl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/print_socket_fork_memmap.pl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/play
+
+
+    - Correct permissions using debian/rules?
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/common/xPL_test.pl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/common/holiday_ical.pl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/common/monitor_actiontec_mi424wr.pl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/common/weather_weatherbug.pl
+
+
+    - Just use debian/rules to correct executable settings in web/*?
+W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/mrwiki.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi_error.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/video_streamer.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/comics/dailystrips/dailystrips-update
+W: misterhouse: script-not-executable usr/share/misterhouse/web/comics/dailystrips/install.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/ia5/pictures/getcomics.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/newclock/alarm.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/newclock/index.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/organizer/calendar.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/organizer/contacts.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/organizer/tasks.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/tattler/tattle_serv.tcl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/misc/actiontec_traffic.html
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/images/bg/footer.jpg
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/graphics/alert.jpg
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/slideshow/css/img/loading-bar-black.gif
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/images/bg/header.jpg
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/lib/default.xsl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/css/img/carrow2.gif
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/test/ajax_example1.shtml
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/test/ajax_example3.shtml
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/images/bg/bullet.gif
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/organizer/images/ical_1.jpg
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/images/bg/gradient.jpg
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/slideshow/css/img/carrow1.gif
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/test/ajax_example2.shtml
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/css/img/loading-bar-black.gif
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/css/layout.css
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/css/img/carrow1.gif
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/slideshow/css/layout.css
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/test/weather.sxml
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/organizer/images/ical_2.jpg
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/test/index.shtml
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/lib/xml2js.xslt
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/slideshow/css/img/carrow2.gif
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/scripts/jd.gallery.js
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/css/jd.gallery.css
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/organizer/images/ical_3.jpg
