@@ -5,7 +5,7 @@ Maintainer: Robert James Clay <jame@rocasa.us>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
 Homepage: http://misterhouse.sourceforge.net
-Vcs-Git: git@github.com:jame/misterhouse.git
+Vcs-Git: git://github.com:jame/misterhouse.git
 Vcs-Browser: https://github.com/jame/misterhouse/commits/debian
 
 Package: misterhouse
