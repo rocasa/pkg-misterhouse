@@ -21,6 +21,7 @@ Description: Home Automation with Perl
 
 Package: misterhouse-doc
 Architecture: all
+Depends: ${misc:Depends}
 Description: documentation for MisterHouse
  MisterHouse is an open source home automation program. It's fun, it's free,
  and it's entirely geeky. Written in Perl, it fires events based on time, web,
