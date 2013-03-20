@@ -1,5 +1,5 @@
 Source: misterhouse
-Section: unknown
+Section: electronics
 Priority: extra
 Maintainer: Robert James Clay <jame@rocasa.us>
 Build-Depends: debhelper (>= 8.0.0)
@@ -20,6 +20,7 @@ Description: Home Automation with Perl
  it a powerful programming interface.
 
 Package: misterhouse-doc
+Section: doc
 Architecture: all
 Depends: ${misc:Depends}
 Description: documentation for MisterHouse
