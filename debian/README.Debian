@@ -1,6 +1,15 @@
 misterhouse for Debian
 ----------------------
 
-<possible notes regarding this package - if none, delete this file>
+    The base installation directory for MisterHouse is /usr/share/misterhouse.
+    A user ID named 'misterhouse' is created but its password is not set as a
+    part of the installation. The ini files are installed to /etc/misterhouse.
 
- -- Robert James Clay <jame@rocasa.us>  Fri, 01 Mar 2013 22:21:51 -0500
+    The bin, lib, common, sounds, and web directories are installed to the
+    /usr/share/misterhouse directory. The data directory is installed to
+    /var/lib/misterhouse. A /usr/local/share/misterhouse base directory is
+    installed for use by the local administrator and pointed to in the
+    default /etc/misterhouse/mh.ini file.
+
+
+ -- Robert James Clay <jame@rocasa.us>  Fri, 20 Mar 2013 20:37:18 -0500
