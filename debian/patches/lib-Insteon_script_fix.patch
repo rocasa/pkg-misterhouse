@@ -1,0 +1,23 @@
+From ca91ce194e178eaa15fa65b86c0cfa2acce3e668 Mon Sep 17 00:00:00 2001
+Author: Robert James Clay <jame@rocasa.us>
+Date: Sun, 24 Mar 2013 06:27:03 -0400
+Description: Add missing shabang to lib/Insteon/MessageDecoder_test.pl file.
+
+---
+ lib/Insteon/MessageDecoder_test.pl |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/Insteon/MessageDecoder_test.pl b/lib/Insteon/MessageDecoder_test.pl
+index 54ed58a..8e409bc 100755
+--- a/lib/Insteon/MessageDecoder_test.pl
++++ b/lib/Insteon/MessageDecoder_test.pl
+@@ -1,4 +1,5 @@
+-
++#!/usr/bin/perl -w
++
+ use strict;
+ use lib "..";
+ use Insteon::MessageDecoder;
+-- 
+1.7.10.4
+
