@@ -1,6 +1,6 @@
-From ca91ce194e178eaa15fa65b86c0cfa2acce3e668 Mon Sep 17 00:00:00 2001
+Bug: http://github.com/hollie/misterhouse/issues/139
 Author: Robert James Clay <jame@rocasa.us>
-Date: Sun, 24 Mar 2013 06:27:03 -0400
+Last-Update: 20130324
 Description: Add missing shabang to lib/Insteon/MessageDecoder_test.pl file.
 
 ---
