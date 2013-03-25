@@ -1,5 +1,7 @@
+Bug: http://github.com/hollie/misterhouse/issues/142
+Bug: http://github.com/hollie/misterhouse/issues/141
 Author: Robert James Clay <jame@rocasa.us>
-Date: Sun, 24 Mar 2013
+Last-Update: 20130325
 Description: Correct path in Perl script shabang lines.
 
 --- a/bin/display_callers
