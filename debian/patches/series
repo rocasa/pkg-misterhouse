@@ -1,3 +1,4 @@
+Correct_sh_shbang.patch
 lib-Insteon_script_fix.patch
 Correct_Perl_shabang_path.patch
 Remove-tracking-scripts.patch

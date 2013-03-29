@@ -1,0 +1,7 @@
+--- a/bin/play
++++ b/bin/play
+@@ -1,3 +1,4 @@
++#!/bin/sh
+ 
+ # This if for use on unix for playing sound files
+ 
