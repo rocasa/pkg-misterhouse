@@ -12,7 +12,6 @@ bin/find_files /usr/share/misterhouse/bin
 bin/find_programs /usr/share/misterhouse/bin
 bin/get_earthquakes /usr/share/misterhouse/bin
 bin/get_email /usr/share/misterhouse/bin
-bin/get_email_rule_example.pl /usr/share/misterhouse/bin
 bin/get_finger /usr/share/misterhouse/bin
 bin/get_mail.wbt /usr/share/misterhouse/bin
 bin/get_mp3_data /usr/share/misterhouse/bin
