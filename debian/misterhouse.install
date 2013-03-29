@@ -1,6 +1,4 @@
 bin/alpha_page /usr/share/misterhouse/bin
-bin/authors /usr/share/misterhouse/bin
-bin/authors_svn /usr/share/misterhouse/bin
 bin/backup_data /usr/share/misterhouse/bin
 bin/configure /usr/share/misterhouse/bin
 bin/dailystrips /usr/share/misterhouse/bin
