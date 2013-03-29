@@ -33,7 +33,6 @@ bin/mhmms-server.pl /usr/share/misterhouse/bin
 bin/mh_proxy /usr/share/misterhouse/bin
 bin/mh_run /usr/share/misterhouse/bin
 bin/mhsend /usr/share/misterhouse/bin
-bin/mh_users_table.pl /usr/share/misterhouse/bin
 bin/monitor_weblog /usr/share/misterhouse/bin
 bin/mp3Rip /usr/share/misterhouse/bin
 bin/mp3Rip.pl /usr/share/misterhouse/bin
