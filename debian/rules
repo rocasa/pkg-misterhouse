@@ -16,5 +16,6 @@ export DH_OPTIONS
 override_dh_fixperms:
 	dh_fixperms
 	find debian/misterhouse/usr/share/misterhouse/web -name '*.css' -exec chmod -x '{}' \;
+	find debian/misterhouse/usr/share/misterhouse/web -name '*.gif' -exec chmod -x '{}' \;
 	find debian/misterhouse/usr/share/misterhouse/lib -name '*.pm' -exec chmod -x '{}' \;
 	find debian/misterhouse-doc/usr/share/doc/misterhouse-doc/examples -type f -exec chmod -x '{}' \;
