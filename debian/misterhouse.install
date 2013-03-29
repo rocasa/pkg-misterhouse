@@ -31,7 +31,6 @@ bin/ical_load /usr/share/misterhouse/bin
 bin/image_index /usr/share/misterhouse/bin
 bin/image_resize /usr/share/misterhouse/bin
 bin/mh /usr/share/misterhouse/bin
-bin/mhc /usr/share/misterhouse/bin
 bin/mhl /usr/share/misterhouse/bin
 bin/mhmms-server.pl /usr/share/misterhouse/bin
 bin/mh_proxy /usr/share/misterhouse/bin
