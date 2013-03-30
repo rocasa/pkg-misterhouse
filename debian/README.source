@@ -30,11 +30,34 @@ rm -f $WORKDIR/bin/h2ph
       so are not needed for a windows installation either.) 
 
 
-    - Win32 specific files in bin/*, etc do not need to be in the binary package.
+    - Win32 specific files in bin/*, etc do not need to be in the orig archive
         - bin/wactrl.exe - PE32 executable (GUI) Intel 80386, for MS Windows
+rm -f $WORKDIR/bin/wactrl.exe
+        - bin/rasdial.exe - PE32 executable (GUI) Intel 80386, for MS Windows
+        - bin/RasDial.txt - documentation file for rasdial.exe
+        - bin/rasdial.ini - ini file for rasdial.exe
+rm -f $WORKDIR/bin/rasdial.*
+rm -f $WORKDIR/bin/RasDial.txt
+        - According to their comments, these are only needed for win32 systems.
+rm -f $WORKDIR/bin/print_socket_fork_memmap.pl
+rm -f $WORKDIR/bin/print_socket_fork.pl
 
+        - bin/*bat - Do not include the upstream Win32 batch files.
+rm -f $WORKDIR/bin/*.bat
 
+    - Do not include the upstream ViaVoice server executable.
+    - ELF 32-bit LSB executable, Intel 80386
+rm -f $WORKDIR/bin/viavoice_server 
 
+    - dialystrips related
+    - The dialystrips package is on Debian & is Suggested by misterhouse
+rm -f $WORKDIR/bin/dailystrips*
+rm -f $WORKDIR/web/comics/dailystrips/*
+rmdir -f $WORKDIR/web/comics/dailystrips/
+    - Shouldn't even be in the orig archive, much less installed with misterhouse
+rm -f $WORKDIR/web/comics/FoxTrot-2003.02.12.gif
+rm -f $WORKDIR/web/comics/Dilbert-2002.02.28.gif
+ 
 
 
     # Create the source archive from the working directory. 
