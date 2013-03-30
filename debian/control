@@ -12,12 +12,24 @@ Package: misterhouse
 Architecture: all
 Depends: ${perl:Depends}, ${misc:Depends}, adduser
 Recommends: mpd, flite | festival
-Suggests: bottlerocket, dailystrips
+Suggests: misterhouse-xs, bottlerocket, dailystrips
 Description: Home Automation with Perl
  MisterHouse is an open source home automation program. It's fun, it's free,
  and it's entirely geeky. Written in Perl, it fires events based on time, web,
  socket, voice, and serial data. Perl subroutines and objects are used to give
  it a powerful programming interface.
+
+Package: misterhouse-xs
+Architecture: any
+Depends: ${misc:Depends}
+Recommends: libtext-levenshteinxs-perl
+Description: architecture dependent packages and files for MisterHouse
+ MisterHouse is an open source home automation program. It's fun, it's free,
+ and it's entirely geeky. Written in Perl, it fires events based on time, web,
+ socket, voice, and serial data. Perl subroutines and objects are used to give
+ it a powerful programming interface.
+ .
+ This is for MisterHouse architecture dependent packages and files.
 
 Package: misterhouse-doc
 Section: doc
