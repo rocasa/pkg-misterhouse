@@ -10,7 +10,7 @@
 
 - Install the HTML documentation with the misterhouse-doc package, and do that
   so it can be installed by itself (i.e., not dependent on the main misterhouse 
-  package being installed).  
+  package also being installed).  
     - Correct entry in misterhouse-doc.doc-base for the 'Author:'
     - Rewrite entry in misterhouse-doc.doc-base for 'Abstract:'?
     - Include note about it in main package
@@ -20,14 +20,16 @@
   should be just one init script or separate ones for things like mh_proxy or
   mh_send_server.pl. (Separate ones could enable those being separately packaged.)
 
-- Add creation of an Arch dependent MisterHouse package.
-    - Name misterhouse-xs? Using misterhouse-bin as the name may not be good
-      because of the /usr/share/misterhouse/bin directory.
+
+- Architecture dependent MisterHouse package is misterhouse-xs.
     - Arch dependent packages that are required by MisterHouse?
-    - Include Text::LevenshteinXS as a Recommends.
-    - Any other XS perl modules?
-    - Include a /usr/local/lib/misterhouse directory for locally installed arch
-      dependent files installed by local admin?
+        - Do have libtext-levenshteinxs-perl (Text::LevenshteinXS) included
+          as a Recommends. Are there any other needed XS perl modules?
+    - Are there any needed/required/useful non perl arch dependent packages?
+    - Include a /usr/local/lib/misterhouse directory for use by the local admin
+      for locally installed arch dependent MisterHouse specific files?
+    - Document it: README.Debian in misterhouse package?  
+
 
 - Determine just what files need to be installed and where, or even if they need
   to be in even the source package.
@@ -72,6 +74,7 @@
       point the code_dir parameter to?  A /usr/local/ subdirectory? It looks
       like it is intended to be for the local admin.  
 
+
 - sounds/
     - Install as /usr/share/misterhouse/sounds
     - Patch:  set as sound_dir_common in /etc/misterhouse/mh.ini
@@ -87,6 +90,7 @@
 
 - data/ini/*.ini - Install as examples?
 
+
 - web/
     - Install required MisterHouse web app files to /usr/share/misterhouse/web?
     - web/my_mh/
@@ -100,12 +104,14 @@
   
 - Detail Copyright & License as necessary for MisterHouse files for inclusion
   in debian/copyright.
+  - 
   - Check what license these are; may need to remove and/or not install them
     but update debian/copyright regarding their associated files.
 W: misterhouse: extra-license-file usr/share/misterhouse/web/SmoothGallery/license.txt
 W: misterhouse: extra-license-file usr/share/misterhouse/web/comics/dailystrips/COPYING
 W: misterhouse: extra-license-file usr/share/misterhouse/web/iphone/icons/LICENSE.TXT
 W: misterhouse: extra-license-file usr/share/misterhouse/web/tattler/COPYING
+
 
 
 - Determine non-perl package Requires/Recommends/Suggests for debian/control.
@@ -122,22 +128,28 @@ W: misterhouse: extra-license-file usr/share/misterhouse/web/tattler/COPYING
   directories (debian/PerlModulesTODO.html)
 
 
+- Convert README.md to an HTML file, install that instead.
+    - Will need to add 'markdown' package to Build-Depends.
+    - Install it to all packages? Just main misterhouse & misterhouse-doc?
+
 - Process the distributed *pod files, like 'mh.pod', as man pages as well as to
   html files if that's not already done?
+    - Use existing bin/update_docs for at least part of it? (Uses sbin/authors,
+      bin/authors_svn, bin/mh_users_table.pl, etc)
+    - Can use pod2man for this, which is part of the perl package. (Because
+      it's not available in perl-base, may need to set the Build-Depends
+      to a possibly versioned perl.)
+    - Add a separate doc-base.faq for the faq*.html files? Use separate 
+      ones instead of creating/adding an index page for it?
 
-- The 'bottlerocket' package is a Suggested install. Add docs regarding it to
-  the README.Debian file.
 
-- docs/toc.html
-    - Discussion in the mailing list (20 Mar 13) about several links to web
-    counters in docs/toc.html (lines 29-35). A concensus was reached about
-    removing them altogether (possibly to be replaced by an opt in under mh
-    project control but that needs to be researched), although a bug has not
-    been opened for it. Add a patch for at least v2.200 that removes the
-    links and reference at least the mailing list dicussion.
+- Currently have the 'bottlerocket' package is a Suggested install. Add docs
+  regarding it to the README.Debian file?  (Is it actually useful for the
+  misterhouse application?)
+
 
 - Configure it for use of a separate '/var/log/misterhouse' directory rather
-  than have logs files go to /var/lib/misterhouse/logs?
+  than have log files go to /var/lib/misterhouse/logs?
 
 
 - Determine a way for MisterHouse to run dwww so that on installs where it's
@@ -148,69 +160,52 @@ W: misterhouse: extra-license-file usr/share/misterhouse/web/tattler/COPYING
   a link somewhere?  
 
 
+- The process was changed so that code/examples is now installed to the directory
+  doc/misterhouse-doc/examples/code with the misterhouse-doc package. Document
+  that in README.Debian, perhaps in both packages?
 
-    - Lintian results from a test build on 20 March 2013
+- bin/mrwiki.pl is a modified version of UseModWiki, which is in Debian as
+  usemod-wiki v1.0.5-1
+    W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/mrwiki.pl
+    - See how they're different; patch as necessary to use usemod-wiki instead
+    of bin/mrwiki and don't keep bin/mrwiki even for orig archive?
+
+- Already are installing the files bin/xAP-bluetooth & bin/xAP-bluetooth.pl as
+  examples. Install the other bin/xAP* files in the same way?
 
 
-    - Change how the contents of doc/examples/examples gets installed?
-E: misterhouse-doc: nested-examples-directory usr/share/doc/misterhouse-doc/examples/examples/
+        - Lintian results from a test build on 30 March 2013
 
-
-    - Need to fix the installation and/or doc-base path reference.
-E: misterhouse-doc: doc-base-file-references-missing-file misterhouse:9 /usr/share/doc/misterhouse-doc/html/index.html
-E: misterhouse-doc: doc-base-file-references-missing-file misterhouse:10 /usr/share/doc/misterhouse-doc/html/*.html
-
-
-    - These don't even need to be in the orig archive? Just don't install? Does
+    - These don't even need to be in the orig archive? Just don't install? Do
     any of the web/iphone/WebApp files need be installed as anything but examples?
 W: misterhouse: windows-thumbnail-database-in-package usr/share/misterhouse/web/iphone/WebApp/Design/Img/Thumbs.db
 W: misterhouse: windows-thumbnail-database-in-package usr/share/misterhouse/web/iphone/WebApp/Img/Thumbs.db
 
+
     - Provided by libjs-jquery package. Replace with package dependency plus
       sym link? Just remove plus document in README.Debian?
-W: misterhouse: embedded-javascript-library usr/share/misterhouse/web/iphone/jquery/jquery.min.js
 W: misterhouse: embedded-javascript-library usr/share/misterhouse/web/js/jquery.min.js
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/iphone/jquery/jquery.min.js
 
-    - Provided by libjs-mootools package. Replace with package dependency plus
-      sym link? Just remove plus document in README.Debian?
-W: misterhouse: embedded-javascript-library usr/share/misterhouse/web/SmoothGallery/scripts/mootools.v1.11.js
-W: misterhouse: embedded-javascript-library usr/share/misterhouse/web/slideshow/js/mootools.js
 
-    - This is intended to be part of the documentation and therefore will not be
-      executed there. Override? It appears to be available as the (newer) package
+    - Provided by libjs-mootools package. Replace with package dependency
+      ('Suggested'?) plus sym link? Just remove plus document in README.Debian?
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/slideshow/js/mootools.js
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/SmoothGallery/scripts/mootools.v1.11.js
+
+
+    - This is intended to be part of the documentation and will not be executed
+      there. Override? It does appear to be available in Debian as the package
       libjs-prototype; replace with an info file noting that? Just remove plus
       document in README.Debian? (And might that pkg info be pushed upstream?)
-W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/examples/SOAP_examples/html/scripts/prototype.js
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/code/SOAP_examples/html/scripts/prototype.js
 
 
-    - Create a patch to correct the bang path line in the file.
-E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/bin/test_x10 (#!/bin/perl != /usr/bin/perl)
-E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/bin/xAP-festival.pl (#!/bin/perl != /usr/bin/perl)
-
-    - Could create a patch to correct these but do they actually need a bang path? (Patch, either way?)
-E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/bin/dbmedit.cgi (#!/usr/local/bin/perl != /usr/bin/perl)
-E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/bin/test_cgi_error.pl (#!/local/bin/perl != /usr/bin/perl)
-E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/bin/weather_graph_zoom.pl (#!/local/bin/perl != /usr/bin/perl)
-E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/newclock/alarm.pl (#!/local/bin/perl != /usr/bin/perl)
-E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/newclock/index.pl (#!/local/bin/perl != /usr/bin/perl)
-E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/organizer/calendar.pl (#!/usr/local/bin/perl != /usr/bin/perl)
-E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/organizer/contacts.pl (#!/usr/local/bin/perl != /usr/bin/perl)
-E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/organizer/tasks.pl (#!/usr/local/bin/perl != /usr/bin/perl)
-E: misterhouse: wrong-path-for-interpreter usr/share/misterhouse/web/organizer/tasks.pl (#!/usr/local/bin/perl != /usr/bin/perl)
-
-
-W: misterhouse: interpreter-not-absolute usr/share/misterhouse/bin/display_callers #!d:/perl/bin/perl.exe
-W: misterhouse: unusual-interpreter usr/share/misterhouse/bin/display_callers #!d:/perl/bin/perl.exe
-
-    - Create a patch to add a '#!/bin/usr/perl' line to the file?
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/Insteon/MessageDecoder_test.pl
-
-
-    - dialystrips related
+        - dailystrips related
     - Install some of this as examples, remove the rest?
 web/comics
     - Include as an empty directory?  
-    - Provide as /usr/local/share/mistershouse/web/comics & provide docs and
+    - Reference as /usr/local/share/mistershouse/web/comics & provide docs and
       default config?
     W: misterhouse: script-not-executable usr/share/misterhouse/web/comics/dailystrips/dailystrips-update
     W: misterhouse: script-not-executable usr/share/misterhouse/web/comics/dailystrips/install.pl
@@ -221,77 +216,23 @@ web/comics/dailystrips/
     - Add documentation for it specifically for mistershouse. To README.Debian?
 web/comics/dailystrips-2003.02.12.html - if kept as example, patch file to point to online version?
 web/comics/dailystrips-2002.02.28.html - if kept as example, patch file to point to online version?
-web/comics/FoxTrot-2003.02.12.gif   -   Shouldn't even be in the orig archive, much less installed with misterhouse
-web/comics/Dilbert-2002.02.28.gif   -   Shouldn't even be in the orig archive, much less installed with misterhouse
 web/comics/index.html   -   Include file as an example?
+    - Report as an upstream bug, after researching? Shouldn't even be in the
+      orig archive, much less installed with misterhouse
+web/comics/FoxTrot-2003.02.12.gif 
+web/comics/Dilbert-2002.02.28.gif
 
 
-    - Correct permissions using debian/rules? 
-W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/mrwiki.pl
+    - Update/change patch(s) to remove the shabang line altogether; bascially, none
+      of the rest of the web/bin/*pl have them. 
 W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi.pl
 W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi_error.pl
 W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/video_streamer.pl
-W: misterhouse: script-not-executable usr/share/misterhouse/web/ia5/pictures/getcomics.pl
-W: misterhouse: script-not-executable usr/share/misterhouse/web/newclock/alarm.pl
-W: misterhouse: script-not-executable usr/share/misterhouse/web/newclock/index.pl
-W: misterhouse: script-not-executable usr/share/misterhouse/web/organizer/calendar.pl
-W: misterhouse: script-not-executable usr/share/misterhouse/web/organizer/contacts.pl
-W: misterhouse: script-not-executable usr/share/misterhouse/web/organizer/tasks.pl
-W: misterhouse: script-not-executable usr/share/misterhouse/web/tattler/tattle_serv.tcl
-
-
-
-    - Correct permissions using debian/rules? 
-W: misterhouse: script-not-executable usr/share/misterhouse/bin/authors_svn
-W: misterhouse: script-not-executable usr/share/misterhouse/bin/mh_users_table.pl
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/xAP-bluetooth
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/get_email_rule_example.pl
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/print_socket_fork.pl
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/xAP-bluetooth.pl
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/print_socket_fork_memmap.pl
-
-    - Does this one even need to be installed?  It "Compiles mh to mhe on Linux
-      using the Par compiler".
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/mhc
-
-    - needs a '#!/bin/sh' line?
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/bin/play
-
-
-    - Correct permissions using debian/rules?   (Check if these should install to examples?)
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/common/xPL_test.pl
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/common/holiday_ical.pl
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/common/monitor_actiontec_mi424wr.pl
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/common/weather_weatherbug.pl
 
 
     - Just use debian/rules to correct executable settings in web/*?
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/graphics/alert.jpg
 W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/lib/default.xsl
 W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/lib/xml2js.xslt
 W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/misc/actiontec_traffic.html
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/organizer/images/ical_1.jpg
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/organizer/images/ical_2.jpg
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/organizer/images/ical_3.jpg
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/slideshow/css/img/carrow2.gif
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/slideshow/css/layout.css
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/slideshow/css/img/carrow1.gif
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/slideshow/css/img/loading-bar-black.gif
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/css/img/carrow2.gif
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/scripts/jd.gallery.js
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/css/img/carrow1.gif
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/images/bg/bullet.gif
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/images/bg/footer.jpg
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/css/layout.css
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/images/bg/header.jpg
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/css/jd.gallery.css
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/images/bg/gradient.jpg
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/SmoothGallery/css/img/loading-bar-black.gif
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/test/index.shtml
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/test/ajax_example1.shtml
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/test/ajax_example2.shtml
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/test/ajax_example3.shtml
-W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/test/weather.sxml
-
 
 
