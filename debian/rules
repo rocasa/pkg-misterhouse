@@ -20,5 +20,5 @@ override_dh_fixperms:
 	find debian/misterhouse/usr/share/misterhouse/web -name '*.jpg' -exec chmod -x '{}' \;
 	find debian/misterhouse/usr/share/misterhouse/lib -name '*.pm' -exec chmod -x '{}' \;
 	chmod -x debian/misterhouse/usr/share/misterhouse/common/*
-	chmod +x debian/misterhouse/usr/share/misterhouse/web/bin/*.pl
+	chmod +x debian/misterhouse/usr/share/misterhouse/web/bin/mrwiki.pl
 	find debian/misterhouse-doc/usr/share/doc/misterhouse-doc/examples -type f -exec chmod -x '{}' \;
