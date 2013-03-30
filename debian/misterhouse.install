@@ -53,8 +53,6 @@ bin/terminalmenu-client.pl /usr/share/misterhouse/bin
 bin/test_x10 /usr/share/misterhouse/bin
 bin/tk_entry /usr/share/misterhouse/bin
 bin/weather_rrd_update_graphs /usr/share/misterhouse/bin
-bin/xAP-bluetooth /usr/share/misterhouse/bin
-bin/xAP-bluetooth.pl /usr/share/misterhouse/bin
 bin/xAP-festival.pl /usr/share/misterhouse/bin
 bin/xAP-info.pl /usr/share/misterhouse/bin
 bin/xAP-speech.pl /usr/share/misterhouse/bin

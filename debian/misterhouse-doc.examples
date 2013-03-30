@@ -15,6 +15,8 @@ bin/vv_postscript.pl
 bin/vv_prescript.pl
 bin/vv_tts.pl
 bin/vv_tts_simple.pl
+bin/xAP-bluetooth
+bin/xAP-bluetooth.pl
 bin/K8000.ZIP
 bin/k8055d.tar.bz2
 code/bruce
