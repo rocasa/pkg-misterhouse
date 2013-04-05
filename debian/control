@@ -10,9 +10,9 @@ Vcs-Browser: https://github.com/jame/misterhouse/commits/debian
 
 Package: misterhouse
 Architecture: all
-Depends: ${perl:Depends}, ${misc:Depends}, adduser
-Recommends: mpd, flite | festival
-Suggests: misterhouse-xs, bottlerocket, dailystrips
+Depends: ${perl:Depends}, ${misc:Depends}, adduser, libberkeleydb-perl, libdb-file-lock-perl
+Recommends: mpd, flite | festival, libaudio-mixer-perl
+Suggests: misterhouse-xs, bottlerocket, dailystrips, libdbi-perl
 Description: Home Automation with Perl
  MisterHouse is an open source home automation program. It's fun, it's free,
  and it's entirely geeky. Written in Perl, it fires events based on time, web,
