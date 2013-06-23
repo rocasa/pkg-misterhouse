@@ -14,6 +14,8 @@
     - Correct entry in misterhouse-doc.doc-base for the 'Author:'
     - Rewrite entry in misterhouse-doc.doc-base for 'Abstract:'?
     - Include note about it in main package
+    - Will a patch be needed for the main package because the html documenation
+      may not be available as expected by default?
 
 
 - Determine which deamons should be started at run time as well as if there
@@ -114,7 +116,7 @@ W: misterhouse: extra-license-file usr/share/misterhouse/web/tattler/COPYING
 
 
 
-- Determine non-perl package Requires/Recommends/Suggests for debian/control.
+- Determine non-perl package Depends/Recommends/Suggests for debian/control.
     - Should the Recommends for 'mpd' actually be 'mpd|mpd-client'? And should
       it be a Suggests instead?
     - Check for other authors and their licenses and add that as neccessary.
@@ -123,33 +125,40 @@ W: misterhouse: extra-license-file usr/share/misterhouse/web/tattler/COPYING
       any such files actually need to be in the package.
 
 
-- Perl Modules Required/Recommended/Suggested for debian/control: review both
+- Perl Modules Depends/Recommended/Suggested for debian/control: review both
   the lib/site/* files as well as the included scripts in the bin/ & code/
   directories (debian/PerlModulesTODO.html)
 
 
 - Convert README.md to an HTML file, install that instead.
-    - Will need to add 'markdown' package to Build-Depends.
+    - Would need to add 'markdown' package to Build-Depends.
     - Install it to all packages? Just main misterhouse & misterhouse-doc?
 
-- Process the distributed *pod files, like 'mh.pod', as man pages as well as to
-  html files if that's not already done?
-    - Use existing bin/update_docs for at least part of it? (Uses sbin/authors,
-      bin/authors_svn, bin/mh_users_table.pl, etc)
-    - Can use pod2man for this, which is part of the perl package. (Because
-      it's not available in perl-base, may need to set the Build-Depends
-      to a possibly versioned perl.)
+- Use existing bin/update_docs in debian/rules to ensure that all upstream
+  *.pod files etc are present, updated, & available for later installation.
+    - That uses POD::HTML which is included in perl-modules, which means
+      that the 'perl' package will definitely need to be included as a
+      Build-Depends. (Still don't know if that will need to be versioned.)
     - Add a separate doc-base.faq for the faq*.html files? Use separate 
       ones instead of creating/adding an index page for it?
+    - Use converted docs/updates.pod docs/updates.html as ChangeLog? Will need
+      to patch it for v3.0, since it didn't get updated.
+      
+- Process the distributed *pod files, like 'mh.pod', as man pages as well as to
+  html files if that's not already done?
+    - Could use pod2man for this, which is part of the perl package. (Because
+      it's not available in perl-base, may need to set the Build-Depends
+      to a possibly versioned perl.)
+      
 
-
-- Currently have the 'bottlerocket' package is a Suggested install. Add docs
-  regarding it to the README.Debian file?  (Is it actually useful for the
-  misterhouse application?)
+- Currently have the 'bottlerocket' package as a Suggested. Add docs regarding
+  it to the README.Debian file?  (Is it actually useful for the misterhouse
+  application and/or user?)
 
 
 - Configure it for use of a separate '/var/log/misterhouse' directory rather
-  than have log files go to /var/lib/misterhouse/logs?
+  than have log files go to /var/lib/misterhouse/logs?  (Either way it would
+  install as empty, so may need the Lintian override for that.)
 
 
 - Determine a way for MisterHouse to run dwww so that on installs where it's
@@ -174,12 +183,12 @@ W: misterhouse: extra-license-file usr/share/misterhouse/web/tattler/COPYING
   examples. Install the other bin/xAP* files in the same way?
 
 
-        - Lintian results from a test build on 30 March 2013
+        - Lintian results from a test build on 23 June 2013
 
     - These don't even need to be in the orig archive? Just don't install? Do
     any of the web/iphone/WebApp files need be installed as anything but examples?
-W: misterhouse: windows-thumbnail-database-in-package usr/share/misterhouse/web/iphone/WebApp/Design/Img/Thumbs.db
-W: misterhouse: windows-thumbnail-database-in-package usr/share/misterhouse/web/iphone/WebApp/Img/Thumbs.db
+W: misterhouse-doc: windows-thumbnail-database-in-package usr/share/doc/misterhouse-doc/examples/iphone/WebApp/Design/Img/Thumbs.db.gz
+W: misterhouse-doc: windows-thumbnail-database-in-package usr/share/doc/misterhouse-doc/examples/iphone/WebApp/Img/Thumbs.db.gz
 
 
     - Provided by libjs-jquery package. Replace with package dependency plus
@@ -196,7 +205,7 @@ W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/ex
 
     - This is intended to be part of the documentation and will not be executed
       there. Override? It does appear to be available in Debian as the package
-      libjs-prototype; replace with an info file noting that? Just remove plus
+      libjs-prototype; replace with an info file noting that? Just remove, plus
       document in README.Debian? (And might that pkg info be pushed upstream?)
 W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/code/SOAP_examples/html/scripts/prototype.js
 
@@ -204,33 +213,37 @@ W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/ex
         - dailystrips related
     - Install some of this as examples, remove the rest?
 web/comics
-    - Include as an empty directory?  
-    - Reference as /usr/local/share/mistershouse/web/comics & provide docs and
-      default config?
+    - Include as an empty /var/lib/misterhouse/www/comics directory?  
+    - Reference as something like /usr/local/share/mistershouse/web/comics and
+      provide docs and default config? Perhaps only using that directory as an
+      example and not actually providing such a directory with the installation?
     W: misterhouse: script-not-executable usr/share/misterhouse/web/comics/dailystrips/dailystrips-update
     W: misterhouse: script-not-executable usr/share/misterhouse/web/comics/dailystrips/install.pl
 web/comics/dailystrips/ 
     - Do not install with misterhouse
     - Do not even include with orig archive?
-    - 'dailystrips' packaged added as Suggested
+    - 'dailystrips' added to package as Suggested
     - Add documentation for it specifically for mistershouse. To README.Debian?
 web/comics/dailystrips-2003.02.12.html - if kept as example, patch file to point to online version?
 web/comics/dailystrips-2002.02.28.html - if kept as example, patch file to point to online version?
 web/comics/index.html   -   Include file as an example?
-    - Report as an upstream bug, after researching? Shouldn't even be in the
-      orig archive, much less installed with misterhouse
+    - Reported to upstream using pull request #161, which was accepted & merged on 14 Apr 2013.
+      Removal should show up in the next stable release; will need to then update README.source
+      and the get-orig-source script.
 web/comics/FoxTrot-2003.02.12.gif 
 web/comics/Dilbert-2002.02.28.gif
 
 
-    - Update/change patch(s) to remove the shabang line altogether; bascially, none
-      of the rest of the web/bin/*pl have them. 
+    - Update/change patch(s) to remove the shabang line altogether? Bascially, none
+      of the rest of the web/bin/*pl files have them. 
+    - (2013/06/23) For the moment, correcting the permissions in debian/rules.
 W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi.pl
 W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi_error.pl
 W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/video_streamer.pl
 
 
     - Just use debian/rules to correct executable settings in web/*?
+    - (2013/06/23) For the moment, correcting the permissions in debian/rules.
 W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/lib/default.xsl
 W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/lib/xml2js.xslt
 W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/misc/actiontec_traffic.html
