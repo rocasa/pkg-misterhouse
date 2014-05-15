@@ -54,10 +54,6 @@ rm -f $WORKDIR/bin/viavoice_server
 rm -f $WORKDIR/bin/dailystrips*
 rm -f $WORKDIR/web/comics/dailystrips/*
 rmdir -f $WORKDIR/web/comics/dailystrips/
-    - Shouldn't even be in the orig archive, much less installed with misterhouse
-rm -f $WORKDIR/web/comics/FoxTrot-2003.02.12.gif
-rm -f $WORKDIR/web/comics/Dilbert-2002.02.28.gif
- 
 
 
     # Create the source archive from the working directory. 
