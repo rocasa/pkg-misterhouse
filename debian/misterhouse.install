@@ -69,7 +69,6 @@ web/misterhouse.dtd /usr/share/misterhouse/web
 web/robots.txt /usr/share/misterhouse/web
 web/tk.css /usr/share/misterhouse/web
 web/bin /usr/share/misterhouse/web
-web/cache /usr/share/misterhouse/web
 web/css /usr/share/misterhouse/web
 web/graphics /usr/share/misterhouse/web
 web/js /usr/share/misterhouse/web
