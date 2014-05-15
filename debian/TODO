@@ -2,6 +2,12 @@
     ===========================
 
 
+- The "v3.1" tag does not point to the most recent commit that might be
+  considered to be that version, as there was another merge and then an
+  update to the "release date" in the docs after that. Since the "v3.1"
+  tag was already made public, perhaps a "v3.1.1" tag. Reference also:
+  https://github.com/hollie/misterhouse/issues/409
+
 - System user 'misterhouse' is created at installation time and removed when
   the package is purged. It will be the owner of the /usr/share/misterhouse
   directory, and will run the 'mh' daemon application(s). Are there any groups
@@ -183,7 +189,7 @@ W: misterhouse: extra-license-file usr/share/misterhouse/web/tattler/COPYING
   examples. Install the other bin/xAP* files in the same way?
 
 
-        - Lintian results from a test build on 23 June 2013
+        - Lintian results from test build on 23 June 2013
 
     - These don't even need to be in the orig archive? Just don't install? Do
     any of the web/iphone/WebApp files need be installed as anything but examples?
@@ -223,29 +229,56 @@ web/comics/dailystrips/
     - Do not install with misterhouse
     - Do not even include with orig archive?
     - 'dailystrips' added to package as Suggested
-    - Add documentation for it specifically for mistershouse. To README.Debian?
+    - Add documentation for it specifically for misterhouse. To README.Debian?
 web/comics/dailystrips-2003.02.12.html - if kept as example, patch file to point to online version?
 web/comics/dailystrips-2002.02.28.html - if kept as example, patch file to point to online version?
 web/comics/index.html   -   Include file as an example?
-    - Reported to upstream using pull request #161, which was accepted & merged on 14 Apr 2013.
-      Removal should show up in the next stable release; will need to then update README.source
-      and the get-orig-source script.
-web/comics/FoxTrot-2003.02.12.gif 
-web/comics/Dilbert-2002.02.28.gif
 
 
     - Update/change patch(s) to remove the shabang line altogether? Bascially, none
       of the rest of the web/bin/*pl files have them. 
-    - (2013/06/23) For the moment, correcting the permissions in debian/rules.
+    - (2014/05/15) For the moment, correcting the permissions in debian/rules.
 W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi.pl
 W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi_error.pl
 W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/video_streamer.pl
 
 
     - Just use debian/rules to correct executable settings in web/*?
-    - (2013/06/23) For the moment, correcting the permissions in debian/rules.
+    - (2014/05/15) For the moment, correcting the permissions in debian/rules.
 W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/lib/default.xsl
 W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/lib/xml2js.xslt
 W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/misc/actiontec_traffic.html
+
+
+------------------------------------------------------------------------------
+	-  Lintian results from a full test build on trusty (v14.04) of non-dfsg v3.1
+	 not otherwise already noted:
+
+	- The source file is actually present but in any case may be removing from the
+	source file altogether and not installing it.
+E: misterhouse source: source-is-missing bin/viavoice_server
+
+	- May be installing the Debian packages for these instead
+E: misterhouse source: source-is-missing web/js/jquery-ui.min.js
+E: misterhouse source: source-is-missing web/js/jquery.min.js
+E: misterhouse source: source-is-missing web/SmoothGallery/scripts/mootools.v1.11.ext.js
+E: misterhouse source: source-is-missing web/SmoothGallery/scripts/mootools.v1.11.js
+E: misterhouse source: source-is-missing web/iphone/jquery/jquery.min.js
+E: misterhouse source: source-is-missing web/slideshow/js/mootools.js
+
+	- Is there a Debian package for this version?
+E: misterhouse source: source-is-missing web/iphone/jquery/jquery.mobile-1.1.1.min.js
+
+	- Currently this is just for the recomments. Perhaps add some kind of README.xs 
+	file to it?
+W: misterhouse-xs: empty-binary-package
+
+
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/code/SOAP_examples/html/scripts/prototype.js
+W: misterhouse-doc: windows-thumbnail-database-in-package usr/share/doc/misterhouse-doc/examples/iphone/WebApp/Design/Img/Thumbs.db.gz
+W: misterhouse-doc: windows-thumbnail-database-in-package usr/share/doc/misterhouse-doc/examples/iphone/WebApp/Img/Thumbs.db.gz
+
+Finished running lintian.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
