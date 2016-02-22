@@ -5,7 +5,7 @@ Maintainer: Robert James Clay <jame@rocasa.us>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.7
 Homepage: http://misterhouse.sourceforge.net
-Vcs-Git: git://github.com:rocasa/misterhouse.git
+Vcs-Git: https://github.com/rocasa/misterhouse.git
 Vcs-Browser: https://github.com/rocasa/misterhouse/commits/debian
 
 Package: misterhouse
