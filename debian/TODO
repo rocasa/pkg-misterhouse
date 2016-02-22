@@ -2,11 +2,9 @@
     ===========================
 
 
-- The "v3.1" tag does not point to the most recent commit that might be
-  considered to be that version, as there was another merge and then an
-  update to the "release date" in the docs after that. Since the "v3.1"
-  tag was already made public, perhaps a "v3.1.1" tag. Reference also:
-  https://github.com/hollie/misterhouse/issues/409
+- Use Files-Excluded in debian/copyright and recent updated for uscan and
+debian/copyright ? Can also reference debian/README.source file created
+for Misterhouse v3.1
 
 - System user 'misterhouse' is created at installation time and removed when
   the package is purged. It will be the owner of the /usr/share/misterhouse
@@ -52,8 +50,8 @@
     - bin/mh.example.ini - install as example
     - bin/mh_proxy.ini - patched version to /etc/misterhouse and as example
     - 'bin/send_verizon' - for now, install as an example.
-    - bin/*rc - Install as examples. (Also contribute new debian example when
-      have that working.)
+    - bin/*rc - Install as examples? (Also contribute new debian example when
+      have that working, like for systemd service.)
     - Install bin/get_email_rule_example.pl as an example instead of to lib dir?
     - Do not install bin/get_mail.wbt?
 
@@ -136,7 +134,7 @@ W: misterhouse: extra-license-file usr/share/misterhouse/web/tattler/COPYING
   directories (debian/PerlModulesTODO.html)
 
 
-- Convert README.md to an HTML file, install that instead.
+- Convert README.md to an HTML file, install that instead
     - Would need to add 'markdown' package to Build-Depends.
     - Install it to all packages? Just main misterhouse & misterhouse-doc?
 
@@ -189,12 +187,248 @@ W: misterhouse: extra-license-file usr/share/misterhouse/web/tattler/COPYING
   examples. Install the other bin/xAP* files in the same way?
 
 
-        - Lintian results from test build on 23 June 2013
+        - Lintian results from a manual test build of v4.0 on 21 Feb 2016
+
+P: misterhouse source: source-contains-prebuilt-windows-binary bin/rasdial.exe
+P: misterhouse source: source-contains-prebuilt-windows-binary bin/wactrl.exe
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site/auto/Win32/MemMap/memmap.dll
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win50/auto/Win32/API/API.dll
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win50/auto/Win32/API/API.exp
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win50/auto/Win32/Setupsup/setupsup.dll
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win512/auto/Win32/Setupsup/Setupsup.dll
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win512/auto/Win32/Setupsup/Setupsup.exp
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win56/auto/Text/LevenshteinXS/LevenshteinXS.dll
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win56/auto/Text/LevenshteinXS/LevenshteinXS.exp
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win56/auto/Win32/API/API.dll
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win56/auto/Win32/API/API.exp
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win56/auto/Win32/Setupsup/Setupsup.dll
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win56/auto/Win32/Setupsup/setupsup.exp
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win58/auto/Win32/API/API.dll
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win58/auto/Win32/API/API.exp
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win58/auto/Win32/setupsup/setupsup.dll
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win58/auto/Win32/setupsup/setupsup.exp
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win58/auto/Win32/API/Callback/Callback.dll
+P: misterhouse source: source-contains-prebuilt-windows-binary lib/site_win58/auto/Win32/API/Callback/Callback.exp: 
+N:    The source tarball contains a prebuilt binary for Microsoft Windows.
+N:    They are usually provided for the convenience of users. These files
+N:    usually just take up space in the tarball and are of no use in Debian.
+N:    
+N:    Check if upstream also provides source-only tarballs that you can use as
+N:    the upstream distribution instead. If not, you may want to ask upstream
+N:    to provide source-only tarballs.
+N:    
+N:    Severity: pedantic, Certainty: certain
+N:    
+N:    Check: cruft, Type: source
+N: 
+
+	- Exclude from created orig archive using Files-Excluded
+P: misterhouse source: source-contains-prebuilt-binary bin/viavoice_server
+N: 
+N:    The source tarball contains a prebuilt ELF object. They are usually left
+N:    by mistake when generating the tarball by not cleaning the source
+N:    directory first. You may want to report this as an upstream bug, in case
+N:    there is no sign that this was intended.
+N:    
+N:    Severity: pedantic, Certainty: certain
+N:    
+N:    Check: cruft, Type: source
+N: 
+E: misterhouse source: source-is-missing bin/viavoice_server
+N: 
+N:    The source of the following file is missing. Lintian checked a few
+N:    possible paths to find the source, and do not find it.
+N:    
+N:    Please repack your package to include the source or add it to
+N:    "debian/missing-sources" directory.
+N:    
+N:    If this is a false-positive, please report a bug against Lintian.
+N:    
+N:    Severity: serious, Certainty: possible
+N:    
+N:    Check: cruft, Type: source
+N: 
+
+
+
+P: misterhouse source: source-contains-prebuilt-javascript-object web/js/jquery-ui.min.js
+N: 
+N:    The source tarball contains a prebuilt (minified) JavaScript object.
+N:    They are usually left by mistake when generating the tarball by not
+N:    cleaning the source directory first. You may want to report this as an
+N:    upstream bug, in case there is no sign that this was intended.
+N:    
+N:    Severity: pedantic, Certainty: possible
+N:    
+N:    Check: cruft, Type: source
+N: 
+E: misterhouse source: source-is-missing web/js/jquery-ui.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/js/jquery.min.js
+E: misterhouse source: source-is-missing web/js/jquery.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/lib/overlib.js line length is 593 characters (>512)
+E: misterhouse source: source-is-missing web/lib/overlib.js line length is 593 characters (>512)
+P: misterhouse source: source-contains-prebuilt-javascript-object web/newclock/calendar.js line length is 266 characters (>256)
+E: misterhouse source: source-is-missing web/newclock/calendar.js line length is 266 characters (>256)
+P: misterhouse source: source-contains-prebuilt-java-object web/tattler/tattler.jar
+N: 
+N:    The source tarball contains a prebuilt Java class file. These are often
+N:    included by mistake when developers generate a tarball without cleaning
+N:    the source directory first. If there is no sign this was intended,
+N:    consider reporting it as an upstream bug.
+N:    
+N:    Severity: pedantic, Certainty: possible
+N:    
+N:    Check: cruft, Type: source
+N: 
+P: misterhouse source: source-contains-prebuilt-javascript-object web/SmoothGallery/scripts/mootools.v1.11.ext.js line length is 32615 characters (>512)
+E: misterhouse source: source-is-missing web/SmoothGallery/scripts/mootools.v1.11.ext.js line length is 32615 characters (>512)
+P: misterhouse source: source-contains-prebuilt-javascript-object web/SmoothGallery/scripts/mootools.v1.11.js line length is 32615 characters (>512)
+E: misterhouse source: source-is-missing web/SmoothGallery/scripts/mootools.v1.11.js line length is 32615 characters (>512)
+P: misterhouse source: source-contains-prebuilt-javascript-object web/ia7/include/bootstrap.3.0.2.min.js
+E: misterhouse source: source-is-missing web/ia7/include/bootstrap.3.0.2.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/ia7/include/bootstrap.3.3.5.min.js
+E: misterhouse source: source-is-missing web/ia7/include/bootstrap.3.3.5.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/ia7/include/bootstrap3-editable.1.5.0.min.js
+E: misterhouse source: source-is-missing web/ia7/include/bootstrap3-editable.1.5.0.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/ia7/include/jquery-ui-1.11.1.custom.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery-ui-1.11.1.custom.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/ia7/include/jquery.1.10.2.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.1.10.2.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/ia7/include/jquery.flot.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.flot.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/ia7/include/jquery.flot.resize.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.flot.resize.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/ia7/include/jquery.flot.selection.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.flot.selection.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/ia7/include/jquery.flot.time.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.flot.time.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/ia7/include/jquery.longclick-1.0.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.longclick-1.0.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/ia7/include/jquery.ui.touch-punch.0.2.3.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.ui.touch-punch.0.2.3.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/iphone/jquery/jquery.min.js
+E: misterhouse source: source-is-missing web/iphone/jquery/jquery.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/iphone/jquery/jquery.mobile-1.1.1.min.js
+E: misterhouse source: source-is-missing web/iphone/jquery/jquery.mobile-1.1.1.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/slideshow/js/mootools.js line length is 32470 characters (>512)
+E: misterhouse source: source-is-missing web/slideshow/js/mootools.js line length is 32470 characters (>512)
+P: misterhouse source: source-contains-prebuilt-windows-binary code/examples/SOAP_examples/vb.net/WebServiceTest.exe
+P: misterhouse source: source-contains-prebuilt-javascript-object web/iphone/WebApp/Action/Logic.js line length is 528 characters (>512)
+E: misterhouse source: source-is-missing web/iphone/WebApp/Action/Logic.js line length is 528 characters (>512)
+
+
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/code/SOAP_examples/html/scripts/prototype.js please use libjs-prototype
+
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/iphone/jquery/jquery.min.js please use libjs-jquery
+
+	- Exclude from dfsg orig archive?
+W: misterhouse-doc: package-contains-timestamped-gzip usr/share/doc/misterhouse-doc/examples/public/phonelogger.tar.gz
+N: 
+N:    The package contains a gzip-compressed file that has timestamps. Such
+N:    files make the packages unreproducible, because their contents depend on
+N:    the time when the package was built.
+N:    
+N:    Please consider passing the "-n" flag to gzip to avoid this.
+N:    
+N:    Refer to https://wiki.debian.org/ReproducibleBuilds for details.
+N:    
+N:    Severity: normal, Certainty: certain
+N:    
+N:    Check: files, Type: binary, udeb
+N: 
+
+
+N: 
+N:    The source tarball contains a prebuilt ELF object. They are usually left
+N:    by mistake when generating the tarball by not cleaning the source
+N:    directory first. You may want to report this as an upstream bug, in case
+N:    there is no sign that this was intended.
+N:    
+N:    Severity: pedantic, Certainty: certain
+N:    
+N:    Check: cruft, Type: source
+N: 
+E: misterhouse source: source-is-missing bin/viavoice_server
+N: 
+N:    The source of the following file is missing. Lintian checked a few
+N:    possible paths to find the source, and do not find it.
+N:    
+N:    Please repack your package to include the source or add it to
+N:    "debian/missing-sources" directory.
+N:    
+N:    If this is a false-positive, please report a bug against Lintian.
+N:    
+N:    Severity: serious, Certainty: possible
+N:    
+N:    Check: cruft, Type: source
+N: 
+
+P: misterhouse source: source-contains-prebuilt-javascript-object web/js/jquery-ui.min.js
+N: 
+N:    The source tarball contains a prebuilt (minified) JavaScript object.
+N:    They are usually left by mistake when generating the tarball by not
+N:    cleaning the source directory first. You may want to report this as an
+N:    upstream bug, in case there is no sign that this was intended.
+N:    
+N:    Severity: pedantic, Certainty: possible
+N:    
+N:    Check: cruft, Type: source
+N: 
+E: misterhouse source: source-is-missing web/js/jquery-ui.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/js/jquery.min.js
+E: misterhouse source: source-is-missing web/js/jquery.min.js
+P: misterhouse source: source-contains-prebuilt-javascript-object web/lib/overlib.js line length is 593 characters (>512)
+E: misterhouse source: source-is-missing web/lib/overlib.js line length is 593 characters (>512)
+P: misterhouse source: source-contains-prebuilt-javascript-object web/newclock/calendar.js line length is 266 characters (>256)
+E: misterhouse source: source-is-missing web/newclock/calendar.js line length is 266 characters (>256)
+P: misterhouse source: source-contains-prebuilt-java-object web/tattler/tattler.jar
+N: 
+N:    The source tarball contains a prebuilt Java class file. These are often
+N:    included by mistake when developers generate a tarball without cleaning
+N:    the source directory first. If there is no sign this was intended,
+N:    consider reporting it as an upstream bug.
+N:    
+N:    Severity: pedantic, Certainty: possible
+N:    
+N:    Check: cruft, Type: source
+        
+I: misterhouse source: quilt-patch-missing-description Correct_sh_shbang.patch
+N: 
+N:    quilt patch files should start with a description of patch. All lines
+N:    before the start of the patch itself are considered part of the
+N:    description. You can edit the description with quilt header -e when the
+N:    patch is at the top of the stack.
+N:    
+N:    As well as a description of the purpose and function of the patch, the
+N:    description should ideally contain author information, a URL for the bug
+N:    report (if any), Debian or upstream bugs fixed by it, upstream status,
+N:    the Debian version and date the patch was first included, and any other
+N:    information that would be useful if someone were investigating the patch
+N:    and underlying problem. Please consider using the DEP-3 format for this
+N:    information.
+N:    
+N:    Refer to http://dep.debian.net/deps/dep3/ for details.
+N:    
+N:    Severity: wishlist, Certainty: certain
+N:    
+N:    Check: patch-systems, Type: source
+N:         
+        
 
     - These don't even need to be in the orig archive? Just don't install? Do
     any of the web/iphone/WebApp files need be installed as anything but examples?
 W: misterhouse-doc: windows-thumbnail-database-in-package usr/share/doc/misterhouse-doc/examples/iphone/WebApp/Design/Img/Thumbs.db.gz
 W: misterhouse-doc: windows-thumbnail-database-in-package usr/share/doc/misterhouse-doc/examples/iphone/WebApp/Img/Thumbs.db.gz
+N: 
+N:    There is a file in the package named Thumbs.db or Thumbs.db.gz, which is
+N:    normally a Windows image thumbnail database. Such databases are
+N:    generally useless in Debian packages and were usually accidentally
+N:    included by copying complete directories from the source tarball.
+N:    
+N:    Severity: normal, Certainty: certain
+N:    
+N:    Check: files, Type: binary, udeb
+N: 
 
 
     - Provided by libjs-jquery package. Replace with package dependency plus
@@ -205,9 +439,20 @@ W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/ex
 
     - Provided by libjs-mootools package. Replace with package dependency
       ('Suggested'?) plus sym link? Just remove plus document in README.Debian?
-W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/slideshow/js/mootools.js
-W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/SmoothGallery/scripts/mootools.v1.11.js
-
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/SmoothGallery/scripts/mootools.v1.11.js please use libjs-mootools
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/slideshow/js/mootools.js please use libjs-mootools
+N: 
+N:    This package contains an embedded copy of JavaScript libraries that are
+N:    now available in their own packages (for example, JQuery, Prototype,
+N:    Mochikit or "Cropper"). Please depend on the appropriate package and
+N:    symlink the library into the appropriate location.
+N:    
+N:    Refer to Debian Policy Manual section 4.13 (Convenience copies of code)
+N:    for details.
+N:    
+N:    Severity: normal, Certainty: possible
+N:    
+N:    Check: files, Type: binary, udeb
 
     - This is intended to be part of the documentation and will not be executed
       there. Override? It does appear to be available in Debian as the package
@@ -228,19 +473,12 @@ web/comics
 web/comics/dailystrips/ 
     - Do not install with misterhouse
     - Do not even include with orig archive?
-    - 'dailystrips' added to package as Suggested
+    - 'dailystrips' package added as Suggested
     - Add documentation for it specifically for misterhouse. To README.Debian?
 web/comics/dailystrips-2003.02.12.html - if kept as example, patch file to point to online version?
 web/comics/dailystrips-2002.02.28.html - if kept as example, patch file to point to online version?
 web/comics/index.html   -   Include file as an example?
 
-
-    - Update/change patch(s) to remove the shabang line altogether? Bascially, none
-      of the rest of the web/bin/*pl files have them. 
-    - (2014/05/15) For the moment, correcting the permissions in debian/rules.
-W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi.pl
-W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi_error.pl
-W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/video_streamer.pl
 
 
     - Just use debian/rules to correct executable settings in web/*?
@@ -250,11 +488,91 @@ W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/lib/xml2j
 W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/misc/actiontec_traffic.html
 
 
+
+W: misterhouse: embedded-javascript-library usr/share/misterhouse/web/js/jquery.min.js please use libjs-jquery
+
+
+P: misterhouse-doc: no-upstream-changelog
+P: misterhouse-xs: no-upstream-changelog
+P: misterhouse: no-upstream-changelog
+N: 
+N:    The package does not install an upstream changelog file. If upstream
+N:    provides a changelog, it should be accessible as
+N:    /usr/share/doc/<pkg>/changelog.gz.
+N:    
+N:    It's currently unclear how best to handle multiple binary packages from
+N:    the same source. Some maintainers put a copy of the upstream changelog
+N:    in each package, but it can be quite long. Some include it in one
+N:    package and add symlinks to the other packages, but this requires there
+N:    be dependencies between the packages. Some only include it in a
+N:    "central" binary package and omit it from more ancillary packages.
+N:    
+N:    Refer to Debian Policy Manual section 12.7 (Changelog files) for
+N:    details.
+N:    
+N:    Severity: pedantic, Certainty: wild-guess
+N:    
+N:    Check: changelog-file, Type: binary
+
+
+
+W: misterhouse-xs: empty-binary-package
+N: 
+N:    This binary package appears to be empty, and its description does not
+N:    say that it's a metapackage or a transitional package. This is often due
+N:    to problems with updating debhelper *.install files during package
+N:    renames or similar problems where installation rules don't put files in
+N:    the correct place.
+N:    
+N:    If the package is deliberately empty, please mention in the package long
+N:    description one of the phrases "metapackage", "dummy", "dependency
+N:    package", or "empty package".
+N:    
+N:    Severity: important, Certainty: wild-guess
+N:    
+N:    Check: files, Type: binary, udeb
+N: 
+
+	-  Exclude from the dfsg orig archive?  It's a Gentoo startup script and not needed for Debian
+P: misterhouse-doc: example-unusual-interpreter usr/share/doc/misterhouse-doc/examples/misterhouse_Gentoo.rc #!/sbin/runscript
+N: 
+N:    This package contains an example script for an interpreter that is not
+N:    shipped in the package and is not known to Lintian. It is possible that
+N:    there is a typo or the interpreter is not executable. If not, please
+N:    file a wishlist bug against lintian, so it can be added to the list of
+N:    known interpreters.
+N:    
+N:    Severity: pedantic, Certainty: possible
+N:    
+N:    Check: scripts, Type: binary
+N:
+
+
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/code/SOAP_examples/html/scripts/prototype.js please use libjs-prototype
+
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/iphone/jquery/jquery.min.js please use libjs-jquery
+
+W: misterhouse-doc: package-contains-timestamped-gzip usr/share/doc/misterhouse-doc/examples/public/phonelogger.tar.gz
+N: 
+N:    The package contains a gzip-compressed file that has timestamps. Such
+N:    files make the packages unreproducible, because their contents depend on
+N:    the time when the package was built.
+N:    
+N:    Please consider passing the "-n" flag to gzip to avoid this.
+N:    
+N:    Refer to https://wiki.debian.org/ReproducibleBuilds for details.
+N:    
+N:    Severity: normal, Certainty: certain
+N:    
+N:    Check: files, Type: binary, udeb
+N: 
+
+
 ------------------------------------------------------------------------------
 	-  Lintian results from a full test build on trusty (v14.04) of non-dfsg v3.1
 	 not otherwise already noted:
 
-	- The source file is actually present but in any case may be removing from the
+	- The source file is actually present but in any case may be removed from the
 	source file altogether and not installing it.
 E: misterhouse source: source-is-missing bin/viavoice_server
 
