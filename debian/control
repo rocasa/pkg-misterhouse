@@ -17,8 +17,12 @@ Depends: adduser,
          perl,
          ${misc:Depends},
          ${perl:Depends}
-Recommends: flite | festival, libaudio-mixer-perl, libtext-levenshtein-perl, mpd
-Suggests: bottlerocket, dailystrips, libdbi-perl, misterhouse-xs
+Recommends: flite | festival,
+            libaudio-mixer-perl,
+            libtext-levenshtein-perl,
+            misterhouse-xs,
+            mpd
+Suggests: bottlerocket, dailystrips, libdbi-perl
 Description: Home Automation with Perl
  MisterHouse is an open source home automation program. It's fun, it's free,
  and it's entirely geeky. Written in Perl, it fires events based on time, web,
