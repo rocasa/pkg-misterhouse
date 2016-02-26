@@ -10,9 +10,15 @@ Vcs-Browser: https://github.com/rocasa/misterhouse/commits/debian
 
 Package: misterhouse
 Architecture: all
-Depends: ${perl:Depends}, ${misc:Depends}, adduser, perl, libberkeleydb-perl, libdb-file-lock-perl, libwww-perl
-Recommends: mpd, flite | festival, libaudio-mixer-perl, libtext-levenshtein-perl
-Suggests: misterhouse-xs, bottlerocket, dailystrips, libdbi-perl
+Depends: adduser,
+         libberkeleydb-perl,
+         libdb-file-lock-perl,
+         libwww-perl,
+         perl,
+         ${misc:Depends},
+         ${perl:Depends}
+Recommends: flite | festival, libaudio-mixer-perl, libtext-levenshtein-perl, mpd
+Suggests: bottlerocket, dailystrips, libdbi-perl, misterhouse-xs
 Description: Home Automation with Perl
  MisterHouse is an open source home automation program. It's fun, it's free,
  and it's entirely geeky. Written in Perl, it fires events based on time, web,

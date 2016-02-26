@@ -1,6 +1,5 @@
 code/examples/*  /usr/share/doc/misterhouse-doc/examples/code
-docs/default.css /usr/share/doc/misterhouse-doc/html
 docs/*.gif /usr/share/doc/misterhouse-doc/html
 docs/*.html /usr/share/doc/misterhouse-doc/html
 docs/*.txt /usr/share/doc/misterhouse-doc/html
-
+docs/default.css /usr/share/doc/misterhouse-doc/html
