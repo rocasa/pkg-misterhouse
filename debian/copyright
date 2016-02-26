@@ -9,7 +9,7 @@ Files-Excluded:
  bin/print_socket_fork_memmap.pl
  bin/print_socket_fork.pl
  bin/*.bat
- bin/viavoice_server
+ bin/viavoice_server*
  bin/dailystrips*
  web/comics/dailystrips/*
 
