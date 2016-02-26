@@ -39,7 +39,6 @@ bin/mp3Rip.pl /usr/share/misterhouse/bin
 bin/net_ftp /usr/share/misterhouse/bin
 bin/outlook_read /usr/share/misterhouse/bin
 bin/play /usr/share/misterhouse/bin
-bin/pocketsphinx /usr/share/misterhouse/bin
 bin/read_email /usr/share/misterhouse/bin
 bin/report_weblog /usr/share/misterhouse/bin
 bin/send_email /usr/share/misterhouse/bin
