@@ -8,5 +8,5 @@ version=3
 # http://sf.net/misterhouse/misterhouse-(.*)\.tar\.gz
 
 # Primary upstream project at GitHub 
-opts=dversionmangle=s/\+dsfg[\d]?//,repacksuffix=+dsfg,filenamemangle=s/.+\/v?(.*)\.tar\.gz/misterhouse-$1.tar.gz/ \
+opts=dversionmangle=s/\+dsfg[\d]?//,repacksuffix=+dsfg \
   https://github.com/hollie/misterhouse/tags .*/v?(\d[\d\.]+)\.tar\.gz
