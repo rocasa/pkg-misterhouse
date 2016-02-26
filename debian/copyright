@@ -11,6 +11,10 @@ Files-Excluded:
  bin/*.bat
  bin/viavoice_server*
  bin/dailystrips*
+ lib/site_win50
+ lib/site_win56
+ lib/site_win58
+ lib/site_win512
  web/comics/dailystrips/*
 
 Files: *
