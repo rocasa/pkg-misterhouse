@@ -1,6 +1,15 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: MisterHouse
 Source: http://misterhouse.sourceforge.net
+Files-Excluded:
+ bin/wactrl.exe
+ bin/rasdial.exe
+ bin/RasDial.txt
+ bin/rasdial.ini
+ bin/print_socket_fork_memmap.pl
+ bin/print_socket_fork.pl
+ bin/*.bat
+ bin/viavoice_server
 
 Files: *
 Copyright: 1998-2006 Bruce Winter <bruce@misterhouse.net>
