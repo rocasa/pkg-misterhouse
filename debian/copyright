@@ -10,6 +10,8 @@ Files-Excluded:
  bin/print_socket_fork.pl
  bin/*.bat
  bin/viavoice_server
+ bin/dailystrips*
+ web/comics/dailystrips/*
 
 Files: *
 Copyright: 1998-2006 Bruce Winter <bruce@misterhouse.net>
