@@ -1,8 +1,6 @@
 bin/alpha_page /usr/share/misterhouse/bin
 bin/backup_data /usr/share/misterhouse/bin
 bin/configure /usr/share/misterhouse/bin
-bin/dailystrips /usr/share/misterhouse/bin
-bin/dailystrips-clean /usr/share/misterhouse/bin
 bin/display /usr/share/misterhouse/bin
 bin/display_callers /usr/share/misterhouse/bin
 bin/do_nothing /usr/share/misterhouse/bin
