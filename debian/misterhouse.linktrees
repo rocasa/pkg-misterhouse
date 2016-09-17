@@ -1,3 +1,7 @@
 replace usr/share/javascript/jquery/jquery.min.js  usr/share/misterhouse/web/js/jquery.min.js
 replace usr/share/javascript/jquery/jquery.min.js  usr/share/misterhouse/web/iphone/jquery/jquery.min.js
 replace usr/share/javascript/jquery/jquery-ui.min.js  usr/share/misterhouse/web/js/jquery-ui.min.js
+replace /usr/share/javascript/jquery-flot/jquery.flot.min.js usr/share/misterhouse/web web/ia7/include/jquery.flot.min.js
+replace /usr/share/javascript/jquery-flot/jquery.flot.resize.min.js usr/share/misterhouse/web web/ia7/include/jquery.flot.resize.min.js
+replace /usr/share/javascript/jquery-flot/jquery.flot.selection.min.js usr/share/misterhouse/web web/ia7/include/jquery.flot.selection.min.js
+replace /usr/share/javascript/jquery-flot/jquery.flot.time.min.js usr/share/misterhouse/web web/ia7/include/jquery.flot.time.min.js
