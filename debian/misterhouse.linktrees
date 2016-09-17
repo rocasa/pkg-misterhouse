@@ -1,2 +1,3 @@
 replace usr/share/javascript/jquery/jquery.min.js  usr/share/misterhouse/web/js/jquery.min.js
+replace usr/share/javascript/jquery/jquery.min.js  usr/share/misterhouse/web/iphone/jquery/jquery.min.js
 replace usr/share/javascript/jquery/jquery-ui.min.js  usr/share/misterhouse/web/js/jquery-ui.min.js
