@@ -2,7 +2,10 @@ Source: misterhouse
 Section: electronics
 Priority: extra
 Maintainer: Robert James Clay <jame@rocasa.us>
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper (>= 9),
+               dh-linktree
+Build-Depends-Indep: libjs-jquery,
+                     libjs-jquery-ui
 Standards-Version: 3.9.7
 Homepage: http://misterhouse.sourceforge.net
 Vcs-Git: https://github.com/rocasa/misterhouse.git
@@ -19,6 +22,8 @@ Depends: adduser,
          ${perl:Depends}
 Recommends: flite | festival,
             libaudio-mixer-perl,
+            libjs-jquery,
+            libjs-jquery-ui,
             libtext-levenshtein-perl,
             misterhouse-xs,
             mpd
