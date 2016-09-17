@@ -6,6 +6,7 @@ Build-Depends: debhelper (>= 9),
                dh-linktree
 Build-Depends-Indep: libjs-jquery,
                      libjs-jquery-flot,
+                     libjs-mootools
                      libjs-jquery-ui
 Standards-Version: 3.9.7
 Homepage: http://misterhouse.sourceforge.net
@@ -26,6 +27,7 @@ Recommends: flite | festival,
             libjs-jquery,
             libjs-jquery-flot,
             libjs-jquery-ui,
+            libjs-mootools,
             libtext-levenshtein-perl,
             misterhouse-xs,
             mpd
