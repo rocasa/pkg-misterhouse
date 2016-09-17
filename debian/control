@@ -5,6 +5,7 @@ Maintainer: Robert James Clay <jame@rocasa.us>
 Build-Depends: debhelper (>= 9),
                dh-linktree
 Build-Depends-Indep: libjs-jquery,
+                     libjs-jquery-flot,
                      libjs-jquery-ui
 Standards-Version: 3.9.7
 Homepage: http://misterhouse.sourceforge.net
@@ -23,6 +24,7 @@ Depends: adduser,
 Recommends: flite | festival,
             libaudio-mixer-perl,
             libjs-jquery,
+            libjs-jquery-flot,
             libjs-jquery-ui,
             libtext-levenshtein-perl,
             misterhouse-xs,
