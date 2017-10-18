@@ -8,7 +8,7 @@ Build-Depends-Indep: libjs-jquery,
                      libjs-jquery-flot,
                      libjs-mootools,
                      libjs-jquery-ui
-Standards-Version: 3.9.7
+Standards-Version: 4.1.1
 Homepage: http://misterhouse.sourceforge.net
 Vcs-Git: https://github.com/rocasa/misterhouse.git
 Vcs-Browser: https://github.com/rocasa/misterhouse/commits/debian
