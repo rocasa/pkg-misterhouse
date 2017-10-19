@@ -1,13 +1,14 @@
-misterhouse (4.2+dsfg-0~1) UNRELEASED; urgency=low
+misterhouse (4.2+dfsg-0~2) UNRELEASED; urgency=low
 
   TODO:
-    - Determine package Requires/Recommends/Suggests.
-    - Determine Perl module Requires/Recommends/Suggests.
-    - Add patches against upstream to debian/patches as necessary.
-    - Determine just what files need to be installed and/or in source package.
-    - Update 'Files-Excluded' in debian/copyright as neccessary.
-    - Detail Copyright & License as necessary for MisterHouse files.
-    - For details and other TODO items, see debian/TODO.
+    + Pending new upstream (v4.3 or v5.0)
+    + Determine package Requires/Recommends/Suggests.
+    + Determine Perl module Requires/Recommends/Suggests.
+    + Add patches against upstream to debian/patches as necessary.
+    + Determine just what files need to be installed and/or in source package.
+    + Update 'Files-Excluded' in debian/copyright as necessary.
+    + Detail Copyright & License as necessary for MisterHouse files.
+    + For details and other TODO items, see debian/TODO.
   * Initial release (Closes: #586135)
 
- -- Robert James Clay <jame@rocasa.us>  Tue,  4 Apr 2017 07:46:15 -0400
+ -- Robert James Clay <jame@rocasa.us>  Thu, 19 Oct 2017 10:27:08 -0400
