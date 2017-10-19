@@ -49,7 +49,8 @@ Description: architecture dependent packages and files for MisterHouse
  socket, voice, and serial data. Perl subroutines and objects are used to give
  it a powerful programming interface.
  .
- This is for MisterHouse architecture dependent packages and files.
+ This dependency package is for MisterHouse architecture dependent packages and
+ files.
 
 Package: misterhouse-doc
 Section: doc
