@@ -19,6 +19,7 @@ Depends: adduser,
          libberkeleydb-perl,
          libdb-file-lock-perl,
          libwww-perl,
+         lsb-base,
          perl,
          ${misc:Depends},
          ${perl:Depends}
