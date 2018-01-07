@@ -10,8 +10,8 @@ Build-Depends-Indep: libjs-jquery,
                      libjs-jquery-ui
 Standards-Version: 4.1.1
 Homepage: http://misterhouse.sourceforge.net
-Vcs-Git: https://github.com/rocasa/misterhouse.git
-Vcs-Browser: https://github.com/rocasa/misterhouse/commits/debian
+Vcs-Git: https://github.com/rocasa/pkg-misterhouse.git
+Vcs-Browser: https://github.com/rocasa/pkg-misterhouse
 
 Package: misterhouse
 Architecture: all
