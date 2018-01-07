@@ -89,7 +89,7 @@
     - At least some of the subdirectories should be installed to the main
     /var/lib/misterhouse directory?  But which of the many files actually
     need to be installed except perhaps as examples.?
-    - Use just the files named "empty_file" to enable installation of the 
+    - Use just the files named "empty_file" to enable installation of the
     directories without warnings/errors regarding empty package directories
     from Lintian?
 
@@ -185,6 +185,125 @@ W: misterhouse: extra-license-file usr/share/misterhouse/web/tattler/COPYING
 - Already are installing the files bin/xAP-bluetooth & bin/xAP-bluetooth.pl as
   examples. Install the other bin/xAP* files in the same way?
 
+
+--------------------------------------------------------------------------------------------------------------------
+        - Lintian results from a manual test build of v5.0 on 6 Jan 2018
+
+E: misterhouse source: source-is-missing web/js/jquery-ui.min.js
+E: misterhouse source: source-is-missing web/js/jquery.min.js
+E: misterhouse source: source-is-missing web/lib/overlib.js line length is 593 characters (>512)
+E: misterhouse source: source-is-missing web/newclock/calendar.js line length is 266 characters (>256)
+E: misterhouse source: source-is-missing web/SmoothGallery/scripts/mootools.v1.11.ext.js line length is 32615 characters (>512)
+E: misterhouse source: source-is-missing web/SmoothGallery/scripts/mootools.v1.11.js line length is 32615 characters (>512)
+E: misterhouse source: source-is-missing web/ia7/include/bootstrap-datepicker.min.js
+E: misterhouse source: source-is-missing web/ia7/include/bootstrap.3.3.7.min.js
+E: misterhouse source: source-is-missing web/ia7/include/bootstrap3-editable.1.5.0.min.js
+E: misterhouse source: source-is-missing web/ia7/include/fontawesome-iconpicker.min.js
+E: misterhouse source: source-is-missing web/ia7/include/javascript.js line length is 305 characters (>256)
+E: misterhouse source: source-is-missing web/ia7/include/jquery-ui-1.11.1.custom.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery-ui-1.12.1.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.1.10.2.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.1.12.4.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.flot.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.flot.resize.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.flot.selection.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.flot.time.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.longclick-1.0.min.js
+E: misterhouse source: source-is-missing web/ia7/include/jquery.ui.touch-punch.0.2.3.min.js
+E: misterhouse source: source-is-missing web/iphone/jquery/jquery.min.js
+E: misterhouse source: source-is-missing web/iphone/jquery/jquery.mobile-1.1.1.min.js
+E: misterhouse source: source-is-missing web/slideshow/js/mootools.js line length is 32470 characters (>512)
+E: misterhouse source: source-is-missing web/iphone/WebApp/Action/Logic.js line length is 528 characters (>512)
+
+W: misterhouse: embedded-javascript-library usr/share/misterhouse/web/js/jquery.min.js please use libjs-jquery
+
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/iphone/jquery/jquery.min.js please use libjs-jquery
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/slideshow/js/mootools.js please use libjs-mootools
+
+
+
+
+W: misterhouse source: out-of-date-standards-version 4.1.1 (current is 4.1.2)
+
+W: misterhouse source: debian-watch-file-should-mangle-version line 12
+
+W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/mrwiki.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/test_cgi_error.pl
+W: misterhouse: script-not-executable usr/share/misterhouse/web/bin/video_streamer.pl
+
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/Insteon/Irrigation.pm
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/holiday_ical.pl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/Insteon/Thermostat.pm
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/lib/default.xsl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/misc/actiontec_traffic.html
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/Insteon/EZIO8SA.pm
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/MySensors.pm
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/Parport_Item.pm
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/monitor_actiontec_mi424wr.pl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/web/lib/xml2js.xslt
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/Insteon/IOLinc.pm
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/Insteon.pm
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/raZberry.pm
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/weather_weatherbug.pl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/common/xPL_test.pl
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/HARMON.pm
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/AD2.pm
+W: misterhouse: executable-not-elf-or-script usr/share/misterhouse/lib/dsc.pm
+
+
+
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/SmoothGallery/scripts/mootools.v1.11.js please use libjs-mootools
+W: misterhouse-doc: embedded-javascript-library usr/share/doc/misterhouse-doc/examples/code/SOAP_examples/html/scripts/prototype.js please use libjs-prototype
+
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia2/webcam.html (http://192.168.0.101:8888/applet)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia3/webcam.html (http://192.168.0.101:8888/applet)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia4/caladd.html (http://login.yahoo.com/config/login?.u=1111111111111&.done=http%3a%2f%2fcalendar.yahoo.com%2f%3fv%3d5%26pr&login=wrighthouseonline&passwd=audrey)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia4/calendar.html (http://login.yahoo.com/config/login?.u=1111111111111&.done=http%3a%2f%2fcalendar.yahoo.com%2f%3fv%3d1%26pr&login=wrighthouseonline&passwd=audrey)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia4/callerid.html (http://192.168.0.1:8080/cid.html)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia4/calmonth.html (http://login.yahoo.com/config/login?.u=1111111111111&.done=http%3a%2f%2fcalendar.yahoo.com%2f%3fv%3d2%26pr&login=wrighthouseonline&passwd=audrey)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia4/caltoday.html (http://login.yahoo.com/config/login?.u=1111111111111&.done=http%3a%2f%2fcalendar.yahoo.com%2f%3fv%3d0%26pr&login=wrighthouseonline&passwd=audrey)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia4/calweek.html (http://login.yahoo.com/config/login?.u=1111111111111&.done=http%3a%2f%2fcalendar.yahoo.com%2f%3fv%3d1%26pr&login=wrighthouseonline&passwd=audrey)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia4/calyear.html (http://login.yahoo.com/config/login?.u=1111111111111&.done=http%3a%2f%2fcalendar.yahoo.com%2f%3fv%3d3%26pr&login=wrighthouseonline&passwd=audrey)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia4/localwx.html (http://www.insolation.weather.net/cgi-bin/interradziprain?zipcode=70535)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia4/wxoutlook.html (http://www.katc.com/weather/images/sixday.gif)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia5/news/news.html (http://us.bc.yahoo.com/b?p=bkxp1ksowhv7xbbncgtodaikglsnxerrfpwaazkv&t=145uosjvl%2fx%3d1147868828%2fe%3d6212465%2fr%3dfull_coverage%2fk%3d5%2fv%3d2.1%2fw%3d8%2fy%3dyahoo%2ff%3d463506181%2fq%3d-1%2fs%3d1%2fj%3d4dc28e44&u=13aneg149%2fn%3drpnoe9g_rvy-%2fc%3d289534.8147481.8965309.6766641%2fd%3dhmyyh%2fb%3d3047844)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia5/news/news.html (http://us.bc.yahoo.com/b?p=bkxp1ksowhv7xbbncgtodaikglsnxerrfpwaazkv&t=146unpcb4%2fx%3d1147868828%2fe%3d6212465%2fr%3dfull_coverage%2fk%3d5%2fv%3d2.1%2fw%3d8%2fy%3dyahoo%2ff%3d4094893567%2fq%3d-1%2fs%3d1%2fj%3d4dc28e44&u=13adbisc9%2fn%3drjnoe9g_rvy-%2fc%3d251521.4269652.5469222.4161007%2fd%3dheadr%2fb%3d1895720)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia5/news/news.html (http://us.i1.yimg.com/us.yimg.com/i/us/my/addtomyyahoo4.gif)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia5/news/news.html (http://us.i1.yimg.com/us.yimg.com/i/nt/ic/ut/bsc/fullcov12_1.gif)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia5/news/news.html (http://us.bc.yahoo.com/b?p=bkxp1ksowhv7xbbncgtodaikglsnxerrfpwaazkv&t=1465e8l35%2fx%3d1147868828%2fe%3d6212465%2fr%3dfull_coverage%2fk%3d5%2fv%3d2.1%2fw%3d8%2fy%3dyahoo%2ff%3d2319627815%2fq%3d-1%2fs%3d1%2fj%3d4dc28e44&u=1297lme5a%2fn%3dr5noe9g_rvy-%2fc%3d-1%2fd%3dfsrvy%2fb%3d-1)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia5/news/news.html (http://us.bc.yahoo.com/b?p=bkxp1ksowhv7xbbncgtodaikglsnxerrfpwaazkv&t=1456qaclr%2fx%3d1147868828%2fe%3d6212465%2fr%3dfull_coverage%2fk%3d5%2fv%3d2.1%2fw%3d8%2fy%3dyahoo%2ff%3d323337630%2fq%3d-1%2fs%3d1%2fj%3d4dc28e44&u=139umgcl3%2fn%3drznoe9g_rvy-%2fc%3d224039.2018123.3493551.1956698%2fd%3dfoot%2fb%3d1050805)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia5/news/news.html (http://us.bc.yahoo.com/b?p=bkxp1ksowhv7xbbncgtodaikglsnxerrfpwaazkv&t=1467k1qmp%2fx%3d1147868828%2fe%3d6212465%2fr%3dfull_coverage%2fk%3d5%2fv%3d3.1%2fw%3d9%2fy%3dyahoo%2ff%3d3321896752%2fq%3d-1%2fs%3d1%2fj%3d4dc28e44)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia5/news/news.html (http://us.js2.yimg.com/us.js.yimg.com/lib/common/lsmfonts20040826.css)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia5/news/news.html (http://us.js2.yimg.com/us.yimg.com/lib/hdr/myyhp_1.9.js)
+W: misterhouse-doc: privacy-breach-generic usr/share/doc/misterhouse-doc/examples/ia5/outside/nlweather.html (http://www.meteoplaza.com/nl/freedata/freedata/middenblauw_first.jpg)
+
+W: misterhouse-doc: windows-thumbnail-database-in-package usr/share/doc/misterhouse-doc/examples/iphone/WebApp/Design/Img/Thumbs.db.gz
+W: misterhouse-doc: windows-thumbnail-database-in-package usr/share/doc/misterhouse-doc/examples/iphone/WebApp/Img/Thumbs.db.gz
+
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/test/weather.sxml
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/test/ajax_example1.shtml
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/code/Insteon_thermostat.pl
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/code/SOAP_examples/vb.net/Web References/MySoapRef/Reference.map
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/misterhouse_mark.rc
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/get_email_rule_example.pl
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/xAP-bluetooth
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/public/rrd_create.bat
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/misterhouse_dan.rc
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/code/SOAP_examples/vb.net/WebServiceTest.vbproj.user
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/test/test_x10.pl
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/test/ajax_example3.shtml
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/test/index.shtml
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/test/ajax_example2.shtml
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/misterhouse_john.rc
+W: misterhouse-doc: executable-not-elf-or-script usr/share/doc/misterhouse-doc/examples/code/SOAP_examples/vb.net/AssemblyInfo.vb
+
+
+I: misterhouse source: testsuite-autopkgtest-missing
+
+
+
+--------------------------------------------------------------------------------------------------------------------
         - Lintian results from a manual test build of v4.2 on 18 Oct 2017
         
 E: misterhouse source: source-is-missing web/js/jquery-ui.min.js
