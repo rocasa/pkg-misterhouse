@@ -1,7 +1,6 @@
-misterhouse (4.2+dfsg-0~2) UNRELEASED; urgency=low
+misterhouse (5.0+dfsg-0~1) UNRELEASED; urgency=low
 
   TODO:
-    + Pending new upstream (v4.3 or v5.0)
     + Determine package Requires/Recommends/Suggests.
     + Determine Perl module Requires/Recommends/Suggests.
     + Add patches against upstream to debian/patches as necessary.
@@ -11,4 +10,4 @@ misterhouse (4.2+dfsg-0~2) UNRELEASED; urgency=low
     + For details and other TODO items, see debian/TODO.
   * Initial release (Closes: #586135)
 
- -- Robert James Clay <jame@rocasa.us>  Thu, 19 Oct 2017 10:27:08 -0400
+ -- Robert James Clay <jame@rocasa.us>  Sat,  6 Jan 2018 19:01:27 -0400
