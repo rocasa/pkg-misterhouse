@@ -16,6 +16,7 @@ Files-Excluded:
  lib/site_win58
  lib/site_win512
  web/comics/dailystrips/*
+ web/js/jquery.min.js
 
 Files: *
 Copyright: 1998-2006 Bruce Winter <bruce@misterhouse.net>
