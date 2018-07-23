@@ -16,6 +16,10 @@ Files-Excluded:
  lib/site_win58
  lib/site_win512
  web/comics/dailystrips/*
+ web/ia7/include/jquery.flot.min.js
+ web/ia7/include/jquery.flot.resize.min.js
+ web/ia7/include/jquery.flot.selection.min.js
+ web/ia7/include/jquery.flot.time.min.js
  web/iphone/WebApp/Img/Thumbs.db
  web/iphone/WebApp/Design/Img/Thumbs.db
  web/js/jquery.min.js
