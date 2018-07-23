@@ -16,6 +16,8 @@ Files-Excluded:
  lib/site_win58
  lib/site_win512
  web/comics/dailystrips/*
+ web/iphone/WebApp/Img/Thumbs.db
+ web/iphone/WebApp/Design/Img/Thumbs.db
  web/js/jquery.min.js
  web/js/jquery-ui.min.js
 
