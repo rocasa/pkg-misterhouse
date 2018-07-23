@@ -1,0 +1,4 @@
+# Override Errors like this, but remove them altogether as web/iphone
+# is there as an example and is associated with a very old js version. 
+misterhouse source: source-is-missing web/iphone/jquery/jquery.min.js
+misterhouse source: source-is-missing web/iphone/jquery/jquery.mobile-1.1.1.min.js
