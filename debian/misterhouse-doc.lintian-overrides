@@ -1,2 +1,5 @@
-# This is only being installed as an example
+# These ares only being installed as an examples
 misterhouse-doc binary: usr/share/doc/misterhouse-doc/examples/iphone/jquery/jquery.min.js
+misterhouse-doc binary: usr/share/doc/misterhouse-doc/examples/slideshow/js/mootools.js
+misterhouse-doc binary: usr/share/doc/misterhouse-doc/examples/SmoothGallery/scripts/mootools.v1.11.js
+misterhouse-doc binary: usr/share/doc/misterhouse-doc/examples/code/SOAP_examples/html/scripts/prototype.js
